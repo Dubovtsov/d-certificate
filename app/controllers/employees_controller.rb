@@ -18,6 +18,7 @@ class EmployeesController < ApplicationController
   def show
     @personal_data = @employee.personal_datum
     @employee_positions = @employee.employee_positions
+    @certificates = @employee.certificates
   end
 
   def new

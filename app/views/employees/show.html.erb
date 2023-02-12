@@ -58,7 +58,16 @@
           </div>
         <% end %>
       </div>
-      <div class="tab-content-item p-5 fade-in" data-tabs-target="tabContentItem" data-tab-id="2" hidden>Tab 2 Content</div>
+
+      <div class="tab-content-item p-5 fade-in" data-tabs-target="tabContentItem" data-tab-id="2" hidden>
+        <div class="flex p-5">
+          <%= link_to new_employee_certificate_path(@employee), data: { turbo_frame: 'modal' }, class: "rounded-lg btn-circle py-2 px-3 bg-green-500 text-white " do %>
+            <i class="fa-solid fa-plus font-bold"></i>
+          <% end %>
+        </div>
+        <%= render @certificates %>
+      </div>
+
       <div class="tab-content-item p-5 fade-in w-full" data-tabs-target="tabContentItem" data-tab-id="3" hidden>
         <div class="flex p-5">
           <%= link_to new_employee_employee_position_path(@employee), data: { turbo_frame: 'modal' }, class: "rounded-lg btn-circle py-2 px-3 bg-green-500 text-white " do %>

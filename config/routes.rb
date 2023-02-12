@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :employee_positions, only: [:index]
+  resources :certificates, only: [:index]
   resources :employees do
     resources :employee_positions, except: [:index]
-    resources :certificates
+    resources :certificates, except: [:index]
     resources :personal_data
     collection { post :import }
   end

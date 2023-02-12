@@ -2,8 +2,8 @@ class Employee < ApplicationRecord
   require 'csv'
   include GenerateCsv
 
-  has_many :employee_positions
-  has_many :positions, through: :employee_positions
+  has_many :employee_positions, dependent: :destroy
+  has_many :positions, through: :employee_positions, dependent: :destroy
   accepts_nested_attributes_for :employee_positions
   has_one :personal_datum, dependent: :destroy
   has_many :certificates, dependent: :destroy
