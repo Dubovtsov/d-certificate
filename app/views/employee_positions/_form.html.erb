@@ -1,0 +1,33 @@
+<%= form_with(model: [@employee, @employee_position], local: true, class: "contents") do |form| %>
+  <% if @employee_position.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(@employee_position.errors.count, "error") %> prohibited this employee_position from being saved:</h2>
+
+      <ul>
+        <% @employee_position.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5" hidden>
+    <%= form.label @employee.id %>
+    <%= form.text_field :employee_id, value:@employee.id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label "Должность" %>
+    <%= form.collection_select :position_id, Position.order(:department_id), :id, :name_with_department, {:prompt => 'Выберите должность...'}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label "Ставка" %>
+    <%= form.number_field :rate, in: 0.25..2.0, step: 0.25, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
+

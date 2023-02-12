@@ -1,0 +1,107 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ /* body {
+  overflow: scroll;
+ } */
+
+ .modal {
+  background-color: #FFF;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  word-break: break-word;
+  border-radius: 6px;
+  z-index: 1000;
+}
+
+.modal-background {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .5);
+  opacity: 1;
+  transition: opacity .2s ease;
+  z-index:800;
+  background:rgba(0,0,0,.7);
+}
+
+button.active {
+  border-bottom: 2px solid rgb(186 230 253);
+}
+
+.page a {
+  cursor: pointer;
+  background-color: rgb(243 244 246);
+  border: 1px solid #cfcfcf;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.page.active {
+  background-color: rgb(232, 238, 250);
+  border: 1px solid #cfcfcf;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.page.prev {
+  background-color: rgb(243 244 246);
+  border: 1px solid #cfcfcf;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.fade-in {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+  }
+  @keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+  } 
+
+.btn-circle {
+  /* color: #FFF; */
+  /* padding: 6px; */
+  border-radius: 35%;
+  /* background-color: #95ccff !important; */
+  transition: all 0.2s linear !important;
+}
+
+.btn-circle:hover {
+  /* color: #FFF; */
+  /* font-weight: 400; */
+  /* padding: 6px; */
+  border-radius: 50%;
+  /* background-color: rgb(252 211 77); */
+  box-shadow: 0px 10px 10px -3px rgba(0,0,0,0.1);
+  transition: all 0.2s linear !important;
+}

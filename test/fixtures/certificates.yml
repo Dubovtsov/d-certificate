@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  legal_entity: false
+  request_number: MyString
+  request_link: MyString
+  end_date: 2023-02-08
+  status: MyString
+  e_service: MyString
+  employee: one
+
+two:
+  legal_entity: false
+  request_number: MyString
+  request_link: MyString
+  end_date: 2023-02-08
+  status: MyString
+  e_service: MyString
+  employee: two

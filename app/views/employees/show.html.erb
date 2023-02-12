@@ -1,0 +1,72 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+  <div class="mx-auto flex flex-row">
+
+    <%= render @employee %>
+  </div>
+
+  <div class="" data-controller="tabs">
+    <div class="tabs flex-row">
+      <button class="w-full
+                    font-medium
+                    text-xs
+                    text-slate-700
+                    leading-tight
+                    uppercase
+                    px-6
+                    py-3
+                    hover:border-transparent hover:bg-gray-100
+                    active" 
+                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="1"><i class="fa-solid fa-id-card px-5 text-xl"></i>Персональный данные</button>
+      <button class="w-full
+                    font-medium
+                    text-xs
+                    text-slate-700
+                    leading-tight
+                    uppercase
+                    px-6
+                    py-3
+                    hover:border-transparent hover:bg-gray-100"
+                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="2"><i class="fa-solid fa-file-contract px-5 text-xl"></i>Сертификаты</button>
+      <button class="w-full
+                    font-medium
+                    text-slate-700
+                    text-xs
+                    leading-tight
+                    uppercase
+                    px-6
+                    py-3
+                    hover:border-transparent hover:bg-gray-100"
+                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="3"><i class="fa-solid fa-briefcase px-5 text-xl"></i>Должности</button>
+    </div>
+    <div class="tab-content bg-gray-100 flex flex-row justify-center" data-tabs-target="content">
+      <div class="tab-content-item p-5 fade-in" data-tabs-target="tabContentItem" data-tab-id="1">
+        <% if @employee.personal_datum.present? %>
+          <div class="p-5 grid justify-items-center">
+            <%= render @personal_data %>
+            <br>
+            <%= link_to 'Edit', edit_employee_personal_datum_path(@employee, @employee.personal_datum), class: "mt-2 rounded-lg py-2 px-3 bg-gray-100 font-medium" %>
+          </div>
+        <% else %>
+          <div class="grid justify-items-center">
+            <div class="mb-6 text-lg">Нет данных</div>
+            <div>
+              <%= link_to 'Добавить персональные данные', new_employee_personal_datum_path(@employee), class: "rounded-lg py-2 px-3 bg-emerald-300 hover:bg-emerald-400 font-medium" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="tab-content-item p-5 fade-in" data-tabs-target="tabContentItem" data-tab-id="2" hidden>Tab 2 Content</div>
+      <div class="tab-content-item p-5 fade-in w-full" data-tabs-target="tabContentItem" data-tab-id="3" hidden>
+        <div class="flex p-5">
+          <%= link_to new_employee_employee_position_path(@employee), data: { turbo_frame: 'modal' }, class: "rounded-lg btn-circle py-2 px-3 bg-green-500 text-white " do %>
+            <i class="fa-solid fa-plus font-bold"></i>
+          <% end %>
+        </div>
+        <%= render @employee_positions %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div id="<%= dom_id certificate %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Legal entity:</strong>
+    <%= certificate.legal_entity %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Request number:</strong>
+    <%= certificate.request_number %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Request link:</strong>
+    <%= certificate.request_link %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">End date:</strong>
+    <%= certificate.end_date %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Status:</strong>
+    <%= certificate.status %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">E service:</strong>
+    <%= certificate.e_service %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Employee:</strong>
+    <%= certificate.employee_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this certificate", certificate, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this certificate', edit_certificate_path(certificate), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
