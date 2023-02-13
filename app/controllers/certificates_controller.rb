@@ -4,7 +4,21 @@ class CertificatesController < ApplicationController
   before_action :set_employee, except: %i[index import]
 
   def index
-    @certificates = Certificate.all
+    if params[:certificates_search]
+
+      @pagy, @certificates = pagy(Certificate.search(params[:certificates_search]), items: 15)
+
+    else
+
+      @pagy, @certificates = pagy(Certificate.all, items: 15)
+
+      respond_to do |format|
+        format.html
+
+        format.csv { send_data Certificate.all.generate_csv, filename: "Certificates-#{Date.today}.csv" }
+      end
+
+    end
   end
 
   def show; end

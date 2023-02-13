@@ -16,7 +16,7 @@
 
   <div class="table-row-group">
     <% certificates.each do |certificate| %>
-      <div class="table-row border-b bg-white border-gray-100">
+      <div class="table-row border-b even:bg-gray-100 border-gray-100">
         <div class="table-cell px-5 py-3"><%= certificate.employee.name_with_initial %></div>
         <div class="table-cell px-5 py-3"><%= certificate.request_number %></div>
         <div class="table-cell break-all px-5 py-3"><%= certificate.request_link %></div>

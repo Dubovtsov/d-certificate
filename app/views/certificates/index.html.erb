@@ -18,6 +18,7 @@
   </div> <!-- Certificates import -->
 
   <div id="certificates" class="min-w-full">
-    <%= render "certificate_all", certificates: Certificate.all %>
+    <%= render "certificate_all", certificates: @certificates %>
   </div>
+  <div class="my-5"><%== pagy_nav(@pagy) %></div>
 </div>
