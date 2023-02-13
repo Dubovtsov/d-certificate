@@ -7,7 +7,17 @@
     <h1 class="font-bold text-4xl">Certificates</h1>
   </div>
 
+  <div class="mb-3"> <!-- Certificates import -->
+    <h3>Certificates import</h3>
+    <%= form_tag certificates_import_path, multipart: true do %>
+    <div class="col input-group">
+      <%= file_field_tag :file, class: "form-control" %>
+    </div>
+    <%= submit_tag "Импортировать", class: "btn btn-sm default-btn" %>
+    <% end %>
+  </div> <!-- Certificates import -->
+
   <div id="certificates" class="min-w-full">
-    <%= render @certificates %>
+    <%= render "certificate_all", certificates: Certificate.all %>
   </div>
 </div>

@@ -1,0 +1,30 @@
+<div id="cerificates">
+
+  <div class="table border-collapse border w-full rounded-lg">
+    <div class="table-header-group">
+      <div class="table-row bg-gray-100 text-xs">
+        <div class="table-cell text-left px-5 py-3 font-semibold">ФИО</div>
+        <div class="table-cell text-left px-5 py-3 font-semibold">Номер запроса</div>
+        <div class="table-cell text-left px-5 py-3 font-semibold">Ссылка на запрос</div>
+        <div class="table-cell text-left px-5 py-3 font-semibold">Дата окончания</div>
+        <div class="table-cell text-left px-5 py-3 font-semibold">Статус</div>
+        <div class="table-cell text-left px-5 py-3 font-semibold">Сервис</div>
+        <div class="table-cell text-left px-5 py-3 font-semibold">ЮЛ</div>
+        <div class="table-cell text-right px-5 py-3"></div>
+      </div>
+    </div>
+
+  <div class="table-row-group">
+    <% certificates.each do |certificate| %>
+      <div class="table-row border-b bg-white border-gray-100">
+        <div class="table-cell px-5 py-3"><%= certificate.employee.name_with_initial %></div>
+        <div class="table-cell px-5 py-3"><%= certificate.request_number %></div>
+        <div class="table-cell break-all px-5 py-3"><%= certificate.request_link %></div>
+        <div class="table-cell px-5 py-3"><%= certificate.end_date %></div>
+        <div class="table-cell px-5 py-3"><%= certificate.status %></div>
+        <div class="table-cell px-5 py-3"><%= certificate.e_service %></div>
+        <div class="table-cell px-5 py-3"><%= certificate.legal_entity %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
