@@ -18,6 +18,11 @@
   overflow: scroll;
  } */
 
+ .field_with_errors {
+  border: 2px solid #f38383;
+  border-radius: 8px;
+ }
+
  .modal {
   background-color: #FFF;
   position: absolute;

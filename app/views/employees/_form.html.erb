@@ -12,21 +12,21 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label "Фамилия" %>
+    <%= form.text_field :last_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label "Имя" %>
+    <%= form.text_field :first_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :middle_name %>
-    <%= form.text_field :middle_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label "Отчество" %>
+    <%= form.text_field :middle_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit "Добавить", class: "rounded-lg py-2 px-3 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
