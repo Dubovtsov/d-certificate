@@ -2,8 +2,6 @@ class EmployeesController < ApplicationController
   before_action :set_employee, only: %i[show edit update destroy]
 
   def index
-    @employees = Employee.all
-
     if params[:employees_search]
       @pagy, @employees = pagy(Employee.search(params[:employees_search]), items: 15)
     else

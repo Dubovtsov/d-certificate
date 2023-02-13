@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'departments#index'
   post 'pesonal_data/import', to: 'personal_data#import'
+  post 'certificates/import', to: 'certificates#import'
 end
