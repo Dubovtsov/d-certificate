@@ -1,6 +1,6 @@
 <div class="grid grid-cols-4 gap-4">
 
-  <div class="p-5 rounded-lg 
+  <div class="px-7 py-2 rounded-lg 
               bg-gradient-to-r from-sky-100 to-blue-200 
               flex justify-between 
               items-center 
@@ -8,7 +8,8 @@
               shadow 
               hover:shadow-lg 
               transition">
-    <div class="overview_card-info">
+    <div class="">
+      <i class="fa-solid fa-file-signature text-3xl text-gray-700"></i>
       <%#= render 'tokens/logo_tokens' %>
     </div>
     <div><b>КОЛИЧЕСТВО УКЭП</b></div>
@@ -24,7 +25,7 @@
     </div>
   </div>
 
-  <div class="p-5 rounded-lg 
+  <div class="px-7 py-2 rounded-lg 
               bg-gradient-to-r from-blue-200 to-indigo-200 
               flex justify-between 
               items-center 
@@ -32,6 +33,7 @@
               shadow hover:shadow-lg 
               transition">
     <div class="overview_card-info">
+      <i class="fa-solid fa-users text-3xl text-gray-700"></i>
       <%#= render 'staff_members/logo_staff_members' %>
     </div>
     <div><b>КОЛИЧЕСТВО СОТРУДНИКОВ</b></div>
@@ -40,7 +42,7 @@
     </div>
   </div>
 
-  <div class="p-5 rounded-lg 
+  <div class="px-7 py-2 rounded-lg 
               bg-gradient-to-r from-indigo-200 to-violet-200 
               flex 
               justify-between 
@@ -50,6 +52,7 @@
               hover:shadow-lg 
               transition">
     <div class="overview_card-info">
+      <i class="fa-solid fa-building-user text-3xl text-gray-700"></i>
       <%#= render 'departments/logo_departments' %>
     </div>
     <div><b>КОЛИЧЕСТВО ОТДЕЛЕНИЙ</b></div>
@@ -58,8 +61,9 @@
     </div>
   </div>
 
-  <div class="p-5 rounded-lg bg-gradient-to-r from-violet-200 to-sky-100 flex justify-between items-center justify-center shadow hover:shadow-lg transition">
+  <div class="px-7 py-2 rounded-lg bg-gradient-to-r from-violet-200 to-sky-100 flex justify-between items-center justify-center shadow hover:shadow-lg transition">
     <div class="overview_card-info">
+      <i class="fa-solid fa-briefcase text-3xl text-gray-700"></i>
       <%#= render 'positions/logo_positions' %>
     </div>
     <div><b>КОЛИЧЕСТВО ДОЛЖНОСТЕЙ</b></div>
@@ -70,7 +74,7 @@
 </div>
 
 <div class="mt-5 grid gap-4 grid-cols-5">
-  <div class="p-5 col-span-4 rounded-lg bg-white shadow">
+  <div class="col-span-4 rounded-lg bg-white ">
     <%= month_calendar(events: @certificates, start_date_param: :end_date) do |date, certificates| %>
       <span class="text-xs font-medium text-gray-500"><%= date.strftime("%d.%m.%Y") %></span>
       <% certificates.each do |certificate| %>

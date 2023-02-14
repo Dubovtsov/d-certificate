@@ -1,24 +1,24 @@
 <div class="simple-calendar">
   <div class="calendar-heading flex gap-4 mb-4">
-    <%= link_to t('simple_calendar.previous', default: '<'), calendar.url_for_previous_view, class: "bg-sky-100 text-sky-700 
+    <%=h link_to t('simple_calendar.previous', default: "#{sanitize '&#9668;'}"), calendar.url_for_previous_view, class: "hover:bg-sky-100 text-sky-700 
                                                                                                     hover:text-sky-500 
                                                                                                     text-xl font-bold 
-                                                                                                    shadow rounded-lg 
-                                                                                                    px-3 py-1 
+                                                                                                     rounded-lg 
+                                                                                                    px-2 py-1 
                                                                                                     hover:shadow-lg 
                                                                                                     transition" %>
     <span class="calendar-title flex items-center justify-center"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-    <%= link_to t('simple_calendar.next', default: '>'), calendar.url_for_next_view, class: "bg-sky-100 text-sky-700 
-                                                                                            hover:text-sky-500 
-                                                                                            text-xl font-bold 
-                                                                                            shadow rounded-lg 
-                                                                                            px-3 py-1 
-                                                                                            hover:shadow-lg 
-                                                                                            transition" %>
+    <%= link_to t('simple_calendar.next', default: "#{sanitize '&#9658;'}"), calendar.url_for_next_view, class: "hover:bg-sky-100 text-sky-700 
+                                                                                              hover:text-sky-500 
+                                                                                              text-xl font-bold 
+                                                                                               rounded-lg 
+                                                                                              px-2 py-1 
+                                                                                              hover:shadow-lg 
+                                                                                              transition" %>
   </div>
 
   <table class="table table-striped">
-    <thead>
+    <thead class="bg-gradient-to-r from-sky-100 to-violet-200">
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
           <th><%= t('date.abbr_day_names')[day.wday] %></th>
