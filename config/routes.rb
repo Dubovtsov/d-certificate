@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   root 'departments#index'
   post 'pesonal_data/import', to: 'personal_data#import'
   post 'certificates/import', to: 'certificates#import'
+  get 'dashboard', to: "dashboard#index"
+  get 'employees/:id/proxy', to: "employees#proxy", as: 'proxy'
 end

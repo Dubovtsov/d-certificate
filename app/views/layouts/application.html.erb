@@ -14,24 +14,34 @@
 
   <body>
     <div class="flex flex-col h-screen">
-      <header class="bg-gray-100 py-4 flex flex-row items-center justify-between">
+      <header class="bg-gray-100 flex flex-row items-center justify-between">
         <div class="flex flex-row items-center">
-          
             <span class="px-3"><%= image_tag "logo60.png" %></span>
-
         </div>
+
+        <div class=""><a class="font-bold px-3" href="#">ГБУЗ "ГКБ №17 ДЗМ"</a></div>
+        
+        <div class="header_avatar user-logout">
+          <%# if user_signed_in? %>
+            <span><%#= current_user.email %></span>
+            <%#= link_to 'Выйти', destroy_user_session_path, class:"nav-link", :method => :delete %>
+          <%# else %>
+              <%#= link_to 'Войти', new_user_session_path, class:"nav-link" %>
+          <%# end %>
+        </div>
+
         <div class="flex flex-row items-center">
-          <nav class="flex flex-row">
-            <a class="px-4 font-semibold text-gray-800 hover:text-green-500" href="#">Link 1</a>
-            <a class="px-4 font-semibold text-gray-800 hover:text-green-500" href="#">Link 2</a>
-            <a class="px-4 font-semibold text-gray-800 hover:text-green-500" href="#">Link 3</a>
-          </nav>
+          <div class="p-3">
+            <span>ОГРН: 1027739805114</span></br>
+            <span>ИНН: 7732044545</span></br>
+            <span>Адрес: ул. Волынская, д. 7</span>
+          </div>
         </div>
       </header>
       <div class="flex flex-row h-full">
         <aside class="bg-gray-100 w-300px py-4">
           <nav class="flex flex-col">
-            <a class="px-4 py-1 font-semibold text-gray-800 hover:text-green-500" href="#">Главная</a>
+            <%= link_to 'Главная', dashboard_url, class:"px-4 py-1 font-semibold text-gray-800 hover:text-green-500" %>
             <%= link_to 'Отделения', departments_path, class:"px-4 py-1 font-semibold text-gray-800 hover:text-green-500" %>
             <%= link_to 'Сотрудники', employees_path, class:"px-4 py-1 font-semibold text-gray-800 hover:text-green-500" %>
             <%= link_to 'Сертификаты', certificates_path, class:"px-4 py-1 font-semibold text-gray-800 hover:text-green-500" %>

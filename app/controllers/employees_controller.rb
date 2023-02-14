@@ -66,6 +66,10 @@ class EmployeesController < ApplicationController
     end
   end
 
+  def proxy
+    render layout: 'proxy'
+  end
+
   private
 
   def set_employee

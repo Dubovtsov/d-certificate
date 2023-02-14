@@ -1,0 +1,117 @@
+<div class="grid grid-cols-4 gap-4">
+
+  <div class="p-5 rounded-lg 
+              bg-gradient-to-r from-sky-100 to-blue-200 
+              flex justify-between 
+              items-center 
+              justify-center 
+              shadow 
+              hover:shadow-lg 
+              transition">
+    <div class="overview_card-info">
+      <%#= render 'tokens/logo_tokens' %>
+    </div>
+    <div><b>КОЛИЧЕСТВО УКЭП</b></div>
+    <div class="overview_card-icon">
+      <div class="rounded-full 
+                  w-14 h-14 
+                  bg-emerald-300 
+                  border border-white 
+                  flex items-center 
+                  justify-center border 
+                  text-2xl">
+        <b><%= Certificate.all.count %></b></div>
+    </div>
+  </div>
+
+  <div class="p-5 rounded-lg 
+              bg-gradient-to-r from-blue-200 to-indigo-200 
+              flex justify-between 
+              items-center 
+              justify-center 
+              shadow hover:shadow-lg 
+              transition">
+    <div class="overview_card-info">
+      <%#= render 'staff_members/logo_staff_members' %>
+    </div>
+    <div><b>КОЛИЧЕСТВО СОТРУДНИКОВ</b></div>
+    <div class="flex ">
+      <div class="rounded-full w-14 h-14 bg-emerald-300 border border-white flex items-center justify-center border text-2xl"><b><%= Employee.all.count %></b></div>
+    </div>
+  </div>
+
+  <div class="p-5 rounded-lg 
+              bg-gradient-to-r from-indigo-200 to-violet-200 
+              flex 
+              justify-between 
+              items-center 
+              justify-center 
+              shadow 
+              hover:shadow-lg 
+              transition">
+    <div class="overview_card-info">
+      <%#= render 'departments/logo_departments' %>
+    </div>
+    <div><b>КОЛИЧЕСТВО ОТДЕЛЕНИЙ</b></div>
+    <div class="overview_card-icon">
+      <div class="rounded-full w-14 h-14 bg-emerald-300 border border-white flex items-center justify-center border text-2xl"><b><%= Department.all.count %></b></div>
+    </div>
+  </div>
+
+  <div class="p-5 rounded-lg bg-gradient-to-r from-violet-200 to-sky-100 flex justify-between items-center justify-center shadow hover:shadow-lg transition">
+    <div class="overview_card-info">
+      <%#= render 'positions/logo_positions' %>
+    </div>
+    <div><b>КОЛИЧЕСТВО ДОЛЖНОСТЕЙ</b></div>
+    <div class="overview_card-icon">
+      <div class="rounded-full w-14 h-14 bg-emerald-300 border border-white flex items-center justify-center border text-2xl"><b><%= Position.all.count %></b></div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-5 grid gap-4 grid-cols-5">
+  <div class="p-5 col-span-4 rounded-lg bg-white shadow">
+    <%= month_calendar(events: @certificates, start_date_param: :end_date) do |date, certificates| %>
+      <span class="text-xs font-medium text-gray-500"><%= date.strftime("%d.%m.%Y") %></span>
+      <% certificates.each do |certificate| %>
+        <div class="text-gray-600 border text-xs font-bold rounded px-2">
+          <%= link_to certificate.employee.last_name, employee_path(certificate.employee_id) %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="p-5 col-span-1 rounded-lg bg-stone-100 d-flex shadow">
+    <table class="table" height="50px">
+      <tbody>
+        <tr class="border-b">
+          <td>действующих:</td>
+          <td class="pl-4 text-center"><span class="px-1 rounded font-bold bg-green-500 text-white"><%= @certificates.certificate_status_counter("действующий") %></span></td>
+        </tr>
+        <tr class="border-b">
+          <td>меньше 1-го месяцев до оконочания:</td>
+          <td class="pl-4 text-center"><span class="px-1 rounded font-bold bg-red-500 text-white"><%= @certificates.one_months_left_counter %></span></td>
+        </tr>
+        <tr class="border-b">
+          <td>меньше 2-х месяцев до оконочания:</td>
+          <td class="pl-4 text-center"><span class="px-1 rounded font-bold bg-yellow-500 text-white"><%= @certificates.two_months_left_counter %></span></td>
+        </tr>
+        <tr class="border-b">
+          <td>черновиков:</td>
+          <td class="pl-4 text-center"><span class="px-1 rounded font-bold bg-cyan-500 text-white"><%= @certificates.certificate_status_counter("черновик") %></span></td>
+        </tr>
+        <tr class="border-b">
+          <td>отклонено:</td>
+          <td class="pl-4 text-center"><span class="px-1 rounded font-bold <%= @certificates.certificate_status_counter("отклонен") == "0" ? "bg-cyan-500" : "bg-red-500" %>  text-white"><%= @certificates.certificate_status_counter("отклонен") %></span></td>
+        </tr>
+        <tr class="border-b">
+          <td>на проверке:</td>
+          <td class="pl-4 text-center"><span class="px-1 rounded font-bold bg-cyan-500 text-white <%= @certificates.certificate_status_counter("на проверке") == "0" ? "bg-info" : "bg-danger" %>  text-white"><%= @certificates.certificate_status_counter("на проверке") %></span></td>
+        </tr>
+         <tr class="border-b">
+          <td>в архиве:</td>
+          <td class="pl-4 text-center"><span class="px-1 rounded font-bold bg-cyan-500 text-white <%= @certificates.certificate_status_counter("архив") == "0" ? "bg-info" : "bg-warning" %>  text-white"><%= @certificates.certificate_status_counter("архив") %></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
