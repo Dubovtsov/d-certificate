@@ -22,7 +22,7 @@
         <div class="table-cell px-5 py-3"><%= certificate.end_date %></div>
         <div class="table-cell px-5 py-3">
           <div clas="flex gap justify-content-center">
-            <%= button_to "add", employee_certificate_path(certificate, certificate:{ status: "черновик" }), class: "btn px-2 py-1 #{ certificate.status == "черновик" ? certificate.status_class : "text-red-400" }", title: "черновик", method: :patch %>
+            <%= button_to "add", employee_certificate_path(certificate.employee_id, certificate, certificate:{ status: "черновик" }), class: "border bg-gray-600 px-2 py-1 #{ certificate.status == "черновик" ? certificate.status_class : "text-red-400" }", title: "черновик", method: :patch %>
           
           </div>
           <%= certificate.status %>
