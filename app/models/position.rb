@@ -10,4 +10,8 @@ class Position < ApplicationRecord
   def name_with_department
     self.department.name + " : " + self.name
   end
+
+  ActiveAdmin.register Position do
+    permit_params :name
+  end
 end
