@@ -14,28 +14,28 @@
 
   <body>
     <div class="flex flex-col h-screen">
-      <header class="bg-gray-100 flex flex-row items-center justify-between">
+      <header class="bg-gray-100 px-6 flex flex-row items-center justify-between">
         <div class="flex flex-row items-center">
             <span class="px-3"><%= image_tag "logo60.png" %></span>
         </div>
 
         <div class=""><a class="font-bold px-3" href="#">ГБУЗ "ГКБ №17 ДЗМ"</a></div>
         
-        <div class="header_avatar user-logout">
-          <%# if user_signed_in? %>
-            <span><%#= current_user.email %></span>
-            <%#= link_to 'Выйти', destroy_user_session_path, class:"nav-link", :method => :delete %>
-          <%# else %>
-              <%#= link_to 'Войти', new_user_session_path, class:"nav-link" %>
-          <%# end %>
-        </div>
-
         <div class="flex flex-row items-center">
           <div class="p-3">
             <span>ОГРН: 1027739805114</span></br>
             <span>ИНН: 7732044545</span></br>
             <span>Адрес: ул. Волынская, д. 7</span>
           </div>
+        </div>
+
+        <div class="header_avatar user-logout">
+          <% if user_signed_in? %>
+            <span><%= current_user.email %></span>
+            <%= button_to 'Выйти', destroy_user_session_path, class:"nav-link", data: { turbo: false }, method: :delete %>
+          <% else %>
+              <%= link_to 'Войти', new_user_session_path, class:"nav-link" %>
+          <% end %>
         </div>
       </header>
       <div class="flex flex-row h-full">

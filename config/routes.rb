@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :employee_positions, only: [:index]
   resources :certificates, only: [:index]
   resources :employees do
