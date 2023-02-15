@@ -13,10 +13,10 @@
       </div>
     </div>
 
-  <div class="table-row-group">
+  <div class="table-row-group text-sm">
     <% certificates.each do |certificate| %>
       <div class="table-row border-b even:bg-gray-100 border-gray-100">
-        <div class="table-cell align-middle px-3 py-2"><%= certificate.employee.name_with_initial %></div>
+        <div class="table-cell align-middle px-3 py-2"><%= link_to certificate.employee.name_with_initial, employee_path(certificate.employee) %></div>
         <div class="table-cell align-middle px-3 py-2"><%= certificate.request_number %></div>
         <div class="table-cell align-middle max-w-sm break-all px-3 py-2"><%= certificate.request_link %></div>
         <div class="table-cell align-middle px-3 py-2"><%= certificate.end_date %></div>
@@ -25,13 +25,12 @@
             <% status_for_select.each do |status| %>
               <%= button_to employee_certificate_path(certificate.employee_id, certificate, 
                             certificate:{ status: status }), 
-                            class: "border bg-gray-600 px-2 py-1 #{ certificate.status != status ? certificate.status_class : "text-red-400" }", 
+                            class: "border border-gray-200 rounded hover:shadow-lg transition px-2 py-1 #{ certificate.status == status ? certificate.status_class : "bg-gray-50" }", 
                             title: status, method: :patch do %>
-                <i class="fa-regular fa-file-lines"></i>
+                <i class="<%= status_button_icon(status) %>"></i> <%# certificates_helper method %>
               <% end %>
             <% end %>
           </div>
-          <%= certificate.status %>
         </div>
         <div class="table-cell align-middle text-center px-3 py-2"><%= certificate.e_service %></div>
         <div class="table-cell align-middle text-center px-3 py-2">
@@ -41,4 +40,3 @@
     <% end %>
   </div>
 </div>
-

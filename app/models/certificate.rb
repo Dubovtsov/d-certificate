@@ -63,15 +63,15 @@ class Certificate < ApplicationRecord
   def status_class
     case status
     when 'черновик'
-      'text-white bg-secondary'
+      'bg-gray-300'
     when 'на проверке'
-      'text-white bg-warning svg-warning'
+      'bg-yellow-300'
     when 'действующий'
-      'text-white bg-success'
+      'bg-green-300'
     when 'отклонен'
-      'text-white bg-danger'
+      'bg-red-300'
     else
-      'text-white bg-warning svg-warning'
+      ''
     end
   end
 end

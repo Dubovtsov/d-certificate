@@ -1,27 +1,18 @@
 class Employee < ApplicationRecord
   require 'csv'
-
   include GenerateCsv
 
   has_many :employee_positions, dependent: :destroy
-
   has_many :positions, through: :employee_positions, dependent: :destroy
-
   accepts_nested_attributes_for :employee_positions
-
   has_one :personal_datum, dependent: :destroy
-
   has_many :certificates, dependent: :destroy
-
   accepts_nested_attributes_for :personal_datum
-
   accepts_nested_attributes_for :employee_positions
   accepts_nested_attributes_for :certificates
 
   validates :last_name, presence: true
-
   validates :first_name, presence: true
-
   before_save :normalize_name
 
   def name_with_initial
@@ -38,9 +29,7 @@ class Employee < ApplicationRecord
 
   def normalize_name
     self.first_name = first_name.upcase
-
     self.last_name = last_name.upcase
-
     self.middle_name = middle_name.upcase
   end
 end
