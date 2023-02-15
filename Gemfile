@@ -49,6 +49,8 @@ gem "bootsnap", require: false
 gem "sassc-rails"
 
 gem 'devise'
+
+gem 'activeadmin'
 # gem "slim"
 
 gem "simple_calendar", "~> 2.4"
