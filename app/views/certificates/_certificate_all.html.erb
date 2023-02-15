@@ -8,35 +8,37 @@
         <div class="table-cell text-left px-3 py-2">Ссылка на запрос</div>
         <div class="table-cell text-left px-3 py-2">Дата окончания</div>
         <div class="table-cell text-center px-3 py-2">Статус</div>
-        <div class="table-cell text-left px-3 py-2">Сервис</div>
-        <div class="table-cell text-left px-3 py-2">ЮЛ</div>
+        <div class="table-cell text-center px-3 py-2">Сервис</div>
+        <div class="table-cell text-center px-3 py-2">ЮЛ</div>
       </div>
     </div>
 
   <div class="table-row-group">
     <% certificates.each do |certificate| %>
       <div class="table-row border-b even:bg-gray-100 border-gray-100">
-        <div class="table-cell px-3 py-2"><%= certificate.employee.name_with_initial %></div>
-        <div class="table-cell px-3 py-2"><%= certificate.request_number %></div>
-        <div class="table-cell max-w-sm break-all px-3 py-2"><%= certificate.request_link %></div>
-        <div class="table-cell px-3 py-2"><%= certificate.end_date %></div>
-        <div class="table-cell grid justify-items-center px-3 py-2">
+        <div class="table-cell align-middle px-3 py-2"><%= certificate.employee.name_with_initial %></div>
+        <div class="table-cell align-middle px-3 py-2"><%= certificate.request_number %></div>
+        <div class="table-cell align-middle max-w-sm break-all px-3 py-2"><%= certificate.request_link %></div>
+        <div class="table-cell align-middle px-3 py-2"><%= certificate.end_date %></div>
+        <div class="table-cell align-middle grid justify-items-center px-3 py-2">
           <div clas="grid justify-items-center">
             <% status_for_select.each do |status| %>
-              <%= button_to "add", employee_certificate_path(certificate.employee_id, certificate, 
+              <%= button_to employee_certificate_path(certificate.employee_id, certificate, 
                             certificate:{ status: status }), 
-                            class: "border bg-gray-600 px-2 py-1 #{ certificate.status == status ? certificate.status_class : "text-red-400" }", 
-                            title: status, method: :patch %>
-           
+                            class: "border bg-gray-600 px-2 py-1 #{ certificate.status != status ? certificate.status_class : "text-red-400" }", 
+                            title: status, method: :patch do %>
+                <i class="fa-regular fa-file-lines"></i>
+              <% end %>
             <% end %>
           </div>
           <%= certificate.status %>
         </div>
-        <div class="table-cell px-3 py-2"><%= certificate.e_service %></div>
-        <div class="table-cell px-3 py-2">
+        <div class="table-cell align-middle text-center px-3 py-2"><%= certificate.e_service %></div>
+        <div class="table-cell align-middle text-center px-3 py-2">
           <%= check_box_tag 'legal_entity', certificate.legal_entity?, (certificate.legal_entity? ? 'checked' : nil), disabled: true %>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
