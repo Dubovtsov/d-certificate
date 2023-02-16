@@ -13,4 +13,8 @@ class Department < ApplicationRecord
       Department.create! row.to_hash unless Department.exists?(name: row['name'])
     end
   end
+
+  ActiveAdmin.register Department do
+    permit_params :name
+  end
 end
