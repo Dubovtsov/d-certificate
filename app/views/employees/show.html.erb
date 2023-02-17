@@ -1,4 +1,4 @@
-<div class="mx-auto md:w-2/3 w-full">
+<div class="mx-auto md:w-full w-full">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
@@ -8,8 +8,8 @@
   </div>
 
   <div class="" data-controller="tabs">
-    <div class="tabs flex-row">
-      <button class="w-full
+    <div class="tabs flex-row md:flex-row lg:flex-row xl:flex-row">
+      <button class="
                     font-medium
                     text-xs
                     text-slate-700
@@ -20,7 +20,7 @@
                     hover:border-transparent hover:bg-gray-100
                     active" 
                     data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="1"><i class="fa-solid fa-id-card px-5 text-xl"></i>Персональный данные</button>
-      <button class="w-full
+      <button class="
                     font-medium
                     text-xs
                     text-slate-700
@@ -30,7 +30,7 @@
                     py-3
                     hover:border-transparent hover:bg-gray-100"
                     data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="2"><i class="fa-solid fa-file-contract px-5 text-xl"></i>Сертификаты</button>
-      <button class="w-full
+      <button class="
                     font-medium
                     text-slate-700
                     text-xs
