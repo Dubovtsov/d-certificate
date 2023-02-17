@@ -11,6 +11,7 @@ require 'capistrano/bundler'
 
 set :rbenv_type, :user
 set :rbenv_ruby, '3.1.3'
+set :branch, "main"
 
 # Load the SCM plugin appropriate to your project:
 #
