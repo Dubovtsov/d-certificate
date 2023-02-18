@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Certificate</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/03b4e43f3b.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div class="flex flex-col h-screen">
+      <header class="bg-gray-100 px-6 flex flex-row items-center justify-between">
+        <div class="flex flex-row items-center">
+            <span class="px-3"><%= image_tag "logo60.png" %></span>
+        </div>
+        <div class=""><a class="font-bold px-3" href="#">ГБУЗ "ГКБ №17 ДЗМ"</a></div>
+      </header>
+      
+      <% if notice.present? || alert.present?%>
+        <div class="bg-indigo-900 text-center py-4 lg:px-4" data-controller="hide">
+          <div class="px-5 py-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
+            <span class="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">New</span>
+            <span class="font-semibold mr-2 text-left flex-auto"><%= notice %></span>
+            <span class="font-semibold mr-2 text-left flex-auto"><%= alert %></span>
+            <button type="button" data-action="hide#hide" class=" ml-auto
+                                        text-yellow-100 border-none rounded-none 
+                                        text-2xl flex-auto
+                                        hover:text-yellow-100 hover:opacity-75 hover:no-underline" data-bs-dismiss="alert" aria-label="Close">
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      <% end %>
+      
+      <div class="flex bg-gray-100 flex-row h-full">
+        <main class="bg-gray-100 p-4 w-full max-w-xs mx-auto">
+          <%= turbo_frame_tag "modal" %>
+          <div class="bg-white w-full shadow rounded-lg p-6">
+            <%= yield %>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
