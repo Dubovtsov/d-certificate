@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root 'departments#index'
+  root 'dashboard#index'
   post 'pesonal_data/import', to: 'personal_data#import'
   post 'certificates/import', to: 'certificates#import'
   get 'dashboard', to: "dashboard#index"
