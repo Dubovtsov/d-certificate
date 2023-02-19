@@ -1,8 +1,8 @@
 <div id="cerificates">
 
   <div class="table border-collapse border w-full rounded-lg">
-    <div class="table-header-group">
-      <div class="table-row bg-gray-100 text-xs font-bold">
+    <div class="table-header-group shadow-lg z-50">
+      <div class="table-row border border-gray-200 bg-gradient-to-t from-gray-100 to-gray-200 text-xs font-bold">
         <div class="table-cell text-left px-3 py-2">ФИО</div>
         <div class="table-cell text-left px-3 py-2">Номер запроса</div>
         <div class="table-cell text-left px-3 py-2">Ссылка на запрос</div>
@@ -13,9 +13,9 @@
       </div>
     </div>
 
-  <div class="table-row-group text-sm">
+  <div class="table-row-group z-0 text-sm">
     <% certificates.each do |certificate| %>
-      <div class="table-row border-b even:bg-gray-100 border-gray-100">
+      <div class="table-row border-b bg-white even:bg-gray-100 border-gray-100">
         <div class="table-cell align-middle px-3 py-2"><%= link_to certificate.employee.name_with_initial, employee_path(certificate.employee) %></div>
         <div class="table-cell align-middle px-3 py-2"><%= certificate.request_number %></div>
         <div class="table-cell align-middle max-w-sm break-all px-3 py-2"><%= certificate.request_link %></div>

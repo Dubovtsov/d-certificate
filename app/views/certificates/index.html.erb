@@ -1,19 +1,21 @@
 <div class="w-full">
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-stone-700 text-3xl">Сертификаты</h1>
-  </div>
-
-  <div class="mb-3"> <!-- Certificates import -->
-    <h3>Certificates import</h3>
-    <%= form_tag certificates_import_path, multipart: true do %>
-    <div class="col input-group">
-      <%= file_field_tag :file, class: "form-control" %>
+  <div class="flex justify-between">
+    <div class="flex justify-between items-center">
+      <h1 class="font-bold text-stone-700 text-3xl">Сертификаты</h1>
     </div>
-    <%= submit_tag "Импортировать", class: "btn btn-sm default-btn" %>
-    <% end %>
-  </div> <!-- Certificates import -->
 
+    <div class="mb-3"> <!-- Certificates import -->
+      <h3>Certificates import</h3>
+      <%= form_tag certificates_import_path, multipart: true do %>
+      <div class="col input-group">
+        <%= file_field_tag :file, class: "form-control" %>
+      </div>
+      <%= submit_tag "Импортировать", class: "btn btn-sm default-btn" %>
+      <% end %>
+    </div> <!-- Certificates import -->
+  </div>
+  
   <div id="certificates" class="min-w-full">
     <%= render "certificate_all", certificates: @certificates %>
   </div>
