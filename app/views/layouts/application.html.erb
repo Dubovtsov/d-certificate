@@ -13,8 +13,8 @@
   </head>
 
   <body>
-    <div class="flex flex-col h-screen">
-      <header class="bg-gray-100 px-6 flex flex-row items-center justify-between">
+    <div class="flex flex-col h-screen bg-gray-200">
+      <header class="px-6 flex flex-row items-center justify-between">
         <div class="flex flex-row items-center">
             <span class="px-3"><%= image_tag "logo60.png" %></span>
         </div>
@@ -56,33 +56,38 @@
       <% end %>
       
       <div class="flex flex-row h-full">
-        <aside class="bg-gray-100 w-300px py-4">
+        <aside class="w-300px py-4">
           <nav class="flex flex-col">
-            <%= link_to 'Главная', dashboard_url, class:"px-4 py-1 font-semibold text-gray-800 hover:text-green-500" %>
-            <%= link_to 'Отделения', departments_path, class:"px-4 py-1 font-semibold text-gray-800 hover:text-green-500" %>
-            <%= link_to 'Сотрудники', employees_path, class:"px-4 py-1 font-semibold text-gray-800 hover:text-green-500" %>
-            <%= link_to 'Сертификаты', certificates_path, class:"px-4 py-1 font-semibold text-gray-800 hover:text-green-500" %>
+            <%= link_to 'Главная', dashboard_url, class:"px-4 py-1 font-semibold hover:text-green-500" %>
+            <%= link_to 'Отделения', departments_path, class:"px-4 py-1 font-semibold hover:text-green-500" %>
+            <%= link_to 'Сотрудники', employees_path, class:"px-4 py-1 font-semibold hover:text-green-500" %>
+            <%= link_to 'Сертификаты', certificates_path, class:"px-4 py-1 font-semibold hover:text-green-500" %>
           </nav>
         </aside>
-        <main class="flex-1 bg-gray-100 p-4">
+        <main class="flex-1 p-4">
           <%= turbo_frame_tag "modal" %>
-          <div class="flex-1 bg-white shadow rounded-lg p-6">
+          <div class="flex-1  bg-white bg-opacity-50
+                      backdrop-blur-lg
+                      border border-gray-200
+                      p-8
+                      
+                      mx-auto shadow-lg rounded-lg p-6">
             <%= yield %>
           </div>
         </main>
       </div>
-      <footer class="bg-gray-300 py-4 flex flex-row items-center justify-between fixed bottom-0 inset-x-0">
+      <%# <footer class="bg-gray-300 py-4 flex flex-row items-center justify-between fixed bottom-0 inset-x-0">
         <div class="flex flex-row items-center">
           <h1 class="text-xl font-bold text-gray-800">Website Footer</h1>
         </div>
         <div class="flex flex-row items-center">
           <nav class="flex flex-row">
             <%= link_to "Панель администратора", admin_root_path, class:"px-4 font-semibold text-gray-800 hover:text-green-500" %>
-            <a class="px-4 font-semibold text-gray-800 hover:text-green-500" href="#">Link 2</a>
+            <%# <a class="px-4 font-semibold text-gray-800 hover:text-green-500" href="#">Link 2</a>
             <a class="px-4 font-semibold text-gray-800 hover:text-green-500" href="#">Link 3</a>
           </nav>
         </div>
-      </footer>
+      </footer> %>
     </div>
   </body>
 </html>
