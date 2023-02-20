@@ -1,7 +1,8 @@
 class Certificate < ApplicationRecord
   require 'csv'
-
+  
   belongs_to :employee
+  default_scope { order(updated_at: :desc) }
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
