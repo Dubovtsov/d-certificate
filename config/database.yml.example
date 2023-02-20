@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   database: d_certificate_development
-  username: dbvtsv
+  username: postgres
   password: <%= Rails.application.secrets.pg_password %>
 
   # The specified database role being used to connect to postgres.
@@ -61,7 +61,7 @@ test:
   <<: *default
   database: d_certificate_test
   port: 5432
-  username: dbvtsv
+  username: postgres
   password: <%= Rails.application.secrets.pg_password %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
