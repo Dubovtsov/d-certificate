@@ -31,3 +31,13 @@
 
 en:
   hello: "Hello world"
+
+en:
+  enumerize:
+    certificate:
+      status:
+        draft: "draft"
+        current: "current"
+        rejected: "rejected"
+        archive: "archive"
+        recalled: "recalled"

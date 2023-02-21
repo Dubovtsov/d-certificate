@@ -1,7 +1,14 @@
 class Certificate < ApplicationRecord
   require 'csv'
+  extend Enumerize
+
+  enumerize :status, in: [:draft, :current, :rejected, :archive, :recalled], default: :draft
 
   belongs_to :employee
+
+  ActiveAdmin.register Certificate do
+    permit_params :legal_entity, :request_number, :end_date, :status, :e_service
+  end
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
