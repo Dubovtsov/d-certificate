@@ -1,0 +1,17 @@
+ru:
+  enumerize:
+    certificate:
+      status:
+        draft: "Черновик"
+        verify: "На проверке"
+        current: "Действующий"
+        rejected: "Отклонен"
+        archive: "Архив"
+        recalled: "Аннулирован"
+
+  draft: "Черновик"
+  verify: "На проверке"
+  current: "Действующий"
+  rejected: "Отклонен"
+  archive: "Архив"
+  recalled: "Аннулирован"
