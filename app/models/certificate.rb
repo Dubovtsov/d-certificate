@@ -1,10 +1,14 @@
 class Certificate < ApplicationRecord
   require 'csv'
   extend Enumerize
-
-  enumerize :status, in: [:draft, :current, :rejected, :archive, :recalled], default: :draft
+  I18n.locale = :ru
+  enumerize :status, in: [:draft, :verify, :current, :rejected, :archive, :recalled], default: :draft, i18n_scope: "status"
 
   belongs_to :employee
+
+  default_scope { order(updated_at: :desc) }
+  # scope :name, -> { where(:attibute => value)}
+  # Ex:- scope :active, -> {where(:active => true)}
 
   ActiveAdmin.register Certificate do
     permit_params :legal_entity, :request_number, :end_date, :status, :e_service
@@ -60,22 +64,23 @@ class Certificate < ApplicationRecord
   end
 
   def two_months_left
-    'two_months_left' if ((end_date - DateTime.now).to_i < 60) && ((end_date - DateTime.now).to_i > 30)
+    ((self.end_date - DateTime.now).to_i < 60) && ((self.end_date - DateTime.now).to_i > 30)
   end
 
   def one_months_left
-    'one_months_left' if (end_date - DateTime.now).to_i < 30 && (status == 'действующий')
+    (self.end_date - DateTime.now).to_i < 30
+    # (end_date - DateTime.now).to_i < 30 && (status == :current)
   end
 
   def status_class
     case status
-    when 'черновик'
+    when "draft"
       'bg-gray-300'
-    when 'на проверке'
+    when "verify"
       'bg-yellow-300'
-    when 'действующий'
+    when "current"
       'bg-green-300'
-    when 'отклонен'
+    when :rejected
       'bg-red-300'
     else
       ''

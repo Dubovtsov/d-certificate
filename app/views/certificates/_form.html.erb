@@ -34,8 +34,9 @@
     </div>
     <div class="my-3 w-1/3">
       <%= form.label "Статус", class:"font-semibold text-sm" %>
-      <%= form.select :status, Certificate.status.options, {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
+      <%= form.select :status, Certificate.status.values.map{ |s| [I18n.t(s, locale: :ru), s] }, {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
     </div>
+
     <div class="my-3 w-1/3">
       <%= form.label "Сервис", class:"font-semibold text-sm" %>
       <%= form.text_field :e_service, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>

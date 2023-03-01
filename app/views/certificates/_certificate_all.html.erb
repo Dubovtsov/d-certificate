@@ -15,7 +15,17 @@
 
   <div class="table-row-group z-0 text-sm">
     <% certificates.each do |certificate| %>
-      <div class="table-row border-b bg-white even:bg-gray-100 border-gray-100">
+      <div class="table-row border-b 
+                  <% if certificate.two_months_left %>
+                    bg-yellow-200
+                  <% elsif certificate.one_months_left %>
+                    bg-red-200
+                  <% else %>
+                    bg-white
+                    even:bg-gray-100 
+                    border-gray-100
+                  <% end %>
+                  border-gray-400">
         <div class="table-cell align-middle px-3 py-2"><%= link_to certificate.employee.name_with_initial, employee_path(certificate.employee) %></div>
         <div class="table-cell align-middle px-3 py-2"><%= certificate.request_number %></div>
         <div class="table-cell align-middle max-w-sm break-all px-3 py-2"><%= certificate.request_link %></div>
@@ -26,7 +36,7 @@
               <%= button_to employee_certificate_path(certificate.employee_id, certificate, 
                             certificate:{ status: status }), 
                             class: "border border-gray-200 rounded hover:shadow-lg transition px-2 py-1 #{ certificate.status == status ? certificate.status_class : "bg-gray-50" }", 
-                            title: status, method: :patch do %>
+                            title: t("enumerize.certificate.status.#{status}", locale: :ru), method: :patch do %>
                 <i class="<%= status_button_icon(status) %>"></i> <%# certificates_helper method %>
               <% end %>
             <% end %>
