@@ -5,8 +5,8 @@ class Certificate < ApplicationRecord
   enumerize :status, in: [:draft, :verify, :current, :rejected, :archive, :recalled], default: :draft, i18n_scope: "status"
 
   belongs_to :employee
-
   default_scope { order(updated_at: :desc) }
+
   # scope :name, -> { where(:attibute => value)}
   # Ex:- scope :active, -> {where(:active => true)}
 
