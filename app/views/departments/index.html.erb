@@ -8,7 +8,13 @@
     </div>
   </div>
 
-  <div id="departments" class="min-w-full">
+  <div id="departments" class="min-w-full" data-controller="search">
+    <input data-search-target="source" 
+              data-action="input->search#filter" 
+              type="text" 
+              class="search" 
+              placeholder="search.." />
+
     <%= render @departments %>
   </div>
 

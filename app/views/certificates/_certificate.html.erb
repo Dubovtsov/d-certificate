@@ -1,11 +1,11 @@
 <div id="<%= dom_id certificate %>" class="table-row-group">
   <div class="table-row border-b bg-white border-gray-100">
-    <div class="table-cell px-5 py-3"><%= certificate.request_number %></div>
-    <div class="table-cell break-all px-5 py-3"><%= certificate.request_link %></div>
-    <div class="table-cell px-5 py-3"><%= certificate.end_date %></div>
-    <div class="table-cell px-5 py-3"><%= certificate.status %></div>
-    <div class="table-cell px-5 py-3"><%= certificate.e_service %></div>
-    <div class="table-cell px-5 py-3"><%= certificate.legal_entity %></div>
+    <div class="table-cell align-middle px-5 py-3"><%= certificate.request_number %></div>
+    <div class="table-cell align-middle break-all px-5 py-3"><%= certificate.request_link %></div>
+    <div class="table-cell align-middle px-5 py-3"><%= certificate.end_date %></div>
+    <div class="table-cell align-middle px-5 py-3"><%= t("enumerize.certificate.status.#{certificate.status}", locale: :ru) %></div>
+    <div class="table-cell align-middle px-5 py-3"><%= certificate.e_service %></div>
+    <div class="table-cell align-middle px-5 py-3"><%= check_box_tag 'legal_entity', certificate.legal_entity?, (certificate.legal_entity? ? 'checked' : nil), disabled: true %></div>
     <div class="table-cell px-5 py-3">
       <div class="flex gap-1">
         <%= link_to edit_employee_certificate_path(@employee, certificate), data: { turbo_frame: 'modal' }, class:"rounded-lg py-2 px-2 bg-blue-400 hover:bg-blue-300 text-white block font-medium" do %>

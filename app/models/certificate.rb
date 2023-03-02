@@ -2,12 +2,12 @@ class Certificate < ApplicationRecord
   require 'csv'
   extend Enumerize
   I18n.locale = :ru
-  enumerize :status, in: [:draft, :verify, :current, :rejected, :archive, :recalled], default: :draft, i18n_scope: "status"
+  enumerize :status, in: [:draft, :verify, :current, :rejected, :archive, :recalled], default: :draft, i18n_scope: "status", scope: :shallow
 
   belongs_to :employee
   default_scope { order(updated_at: :desc) }
 
-  # scope :name, -> { where(:attibute => value)}
+  scope :select_by_draft, -> { Certificate.draft}
   # Ex:- scope :active, -> {where(:active => true)}
 
   ActiveAdmin.register Certificate do

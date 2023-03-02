@@ -26,7 +26,7 @@
                     border-gray-100
                   <% end %>
                   border-gray-400">
-        <div class="table-cell align-middle px-3 py-2"><%= link_to certificate.employee.name_with_initial, employee_path(certificate.employee) %></div>
+        <div class="table-cell align-middle px-3 py-2" title="Создан <%= certificate.created_at %>"><%= link_to certificate.employee.name_with_initial, employee_path(certificate.employee) %></div>
         <div class="table-cell align-middle px-3 py-2"><%= certificate.request_number %></div>
         <div class="table-cell align-middle max-w-sm break-all px-3 py-2"><%= certificate.request_link %></div>
         <div class="table-cell align-middle px-3 py-2"><%= certificate.end_date %></div>

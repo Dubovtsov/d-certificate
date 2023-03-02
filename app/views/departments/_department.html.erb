@@ -1,5 +1,5 @@
 <%= turbo_frame_tag department do %>
-  <div id="<%= dom_id department %>" class="flex w-full my-2 rounded-lg border items-center px-3 py-2 bg-white">
+  <div id="<%= dom_id department %>" class="flex w-full my-2 rounded-lg border items-center px-3 py-2 bg-white" data-search-target="filterable" data-search-key='<%= "#{department.name}".downcase %>'>
     <div class="flex-auto">
       <%= link_to department.name.capitalize, department, data: { turbo_frame: "_top" } %>
     </div>
