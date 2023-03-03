@@ -7,7 +7,7 @@ class Certificate < ApplicationRecord
   belongs_to :employee
   default_scope { order(updated_at: :desc) }
 
-  scope :select_by_draft, -> { Certificate.draft}
+  scope :select_by_status, -> (status) { where(status: status) if status.present? }
   # Ex:- scope :active, -> {where(:active => true)}
 
   ActiveAdmin.register Certificate do

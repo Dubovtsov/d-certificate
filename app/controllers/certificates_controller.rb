@@ -1,12 +1,14 @@
 class CertificatesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_certificate, only: %i[show edit update destroy]
-
+  before_action :get_request_path, only: %i[update]
   before_action :set_employee, except: %i[index import]
 
   def index
-    if params[:certificates_search]
-      @pagy, @certificates = pagy(Certificate.search(params[:certificates_search]), items: 11)
+    if params[:status]
+      @certificates = Certificate.all
+      @certificates = Certificate.select_by_status(params[:status]) if params[:status].present?
+      # @pagy, @certificates = pagy(Certificate.search(params[:certificates_search]), items: 11)
     else
       @pagy, @certificates = pagy(Certificate.all, items: 11)
       respond_to do |format|
@@ -46,8 +48,13 @@ class CertificatesController < ApplicationController
   def update
     respond_to do |format|
       if @certificate.update(certificate_params)
-        format.html { redirect_to employee_url(@employee), notice: 'Certificate was successfully updated.' }
-        format.json { render :show, status: :ok, location: @certificate }
+        if @request.include?("employee")
+          format.html { redirect_to employee_url(@employee), notice: "Certificate was successfully updated." }
+          format.json { render :show, status: :ok, location: @certificate }
+        else
+          format.html { redirect_to certificates_url, notice: "Certificate was successfully updated." }
+          format.json { render :show, status: :ok, location: @certificate }
+        end
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @certificate.errors, status: :unprocessable_entity }
@@ -58,12 +65,17 @@ class CertificatesController < ApplicationController
   def destroy
     @certificate.destroy
     respond_to do |format|
-      format.html { redirect_to employee_url(@employee), notice: 'Certificate was successfully destroyed.' }
+      format.html { redirect_to employee_url(@employee), notice: "Certificate was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
+
+  def get_request_path
+    @request = request.env["HTTP_REFERER"]
+  end
+  
 
   def set_certificate
     @certificate = Certificate.find(params[:id])

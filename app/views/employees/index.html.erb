@@ -9,11 +9,15 @@
     </div>
   </div>
 
-  <div id="employees" class="min-w-full">
+  <div id="employees" class="min-w-full" data-controller="search">
+    <input data-search-target="source" 
+                data-action="input->search#filter" 
+                type="text" 
+                class="search" 
+                placeholder="search.." />
     <%= render @employees %>
+    <div class="my-5"><%== pagy_nav(@pagy) %></div>
   </div>
-
-  <div class="my-5"><%== pagy_nav(@pagy) %></div>
 
   <div class="mb-3"> <!-- Employee import -->
     <%= form_tag import_employees_path, multipart: true do %>

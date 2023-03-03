@@ -17,4 +17,12 @@ class Department < ApplicationRecord
   ActiveAdmin.register Department do
     permit_params :name
   end
+
+  def self.search(search)
+    if search
+      Department.where('name LIKE ?', "%#{search.downcase}%")
+    else
+      Department.all
+    end
+  end
 end

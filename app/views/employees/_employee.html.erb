@@ -1,4 +1,4 @@
-<div id="<%= dom_id employee %>" class="flex w-full my-2 rounded-lg hover:shadow-lg transition border items-center px-3 py-2 bg-white">
+<div id="<%= dom_id employee %>" class="flex w-full my-2 rounded-lg hover:shadow-lg transition border items-center px-3 py-2 bg-white" data-search-target="filterable" data-search-key='<%= "#{employee.name_with_initial}".downcase %>'>
   <div class="flex-auto">
     <%= link_to employee.name_with_initial, employee %>
   </div>

@@ -3,7 +3,7 @@
   <div class="flex justify-between">
     <div class="flex justify-between items-center">
       <h1 class="font-bold text-stone-700 text-3xl">Сертификаты</h1>
-      <%= link_to "Some Page", certificates_path(Certificate.select_by_draft) %>
+      <%#= link_to "Some Page", certificates_path(Certificate.select_by_draft) %>
     </div>
 
     <div class="mb-3"> <!-- Certificates import -->
@@ -15,10 +15,23 @@
       <%= submit_tag "Импортировать", class: "btn btn-sm default-btn" %>
       <% end %>
     </div> <!-- Certificates import -->
+
+    <div class="w-96">
+      <%= form_tag certificates_path, class: "w-full", method: :get do %>
+        <div class="flex items-center gap-3">
+          <div class="">
+            <%= select_tag :status, options_for_select(Certificate.status.values.map{ |s| [I18n.t(s, locale: :ru), s] }, selected: params[:status]), include_blank: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 " %>
+          </div>
+          <div class="">
+            <%= submit_tag "Filter", class:"rounded-lg cursor-pointer py-2 px-3 bg-gradient-to-b from-blue-400 to-blue-500 text-white block font-medium" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
   
   <div id="certificates" class="min-w-full">
     <%= render "certificate_all", certificates: @certificates %>
   </div>
-  <div class="my-5"><%== pagy_nav(@pagy) %></div>
+  <div class="my-5"><%== pagy_nav(@pagy) if @pagy.present? %></div>
 </div>
