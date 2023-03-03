@@ -3,7 +3,6 @@
   <div class="flex justify-between mb-3">
     <div class="flex justify-between items-center">
       <h1 class="font-bold text-stone-700 text-3xl">Сертификаты</h1>
-      <%#= link_to "Some Page", certificates_path(Certificate.select_by_draft) %>
     </div>
 
     <div class="mb-3"> <!-- Certificates import -->
@@ -21,15 +20,38 @@
         <legend>Фильтры</legend>
         <%= form_tag certificates_path, class: "grid grid-cols-4 gap-3 w-full mb-3", method: :get do %>
           <div class="col-start-2 col-span-2">
-            <%= select_tag :status, options_for_select(Certificate.status.values.map{ |s| [I18n.t(s, locale: :ru), s] }, selected: params[:status]), include_blank: true, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
+            <%= select_tag :status, 
+                            options_for_select(Certificate.status.values.map{ |s| [I18n.t(s, locale: :ru), s] }, 
+                            selected: params[:status]), 
+                            include_blank: true, 
+                            class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
           </div>
           <div class="col-span-1">
             <%= submit_tag "Filter", class:"rounded-lg cursor-pointer py-2 px-3 bg-gradient-to-b from-blue-400 to-blue-500 text-white font-medium w-full" %>
           </div>
         <% end %>
         <div class="grid grid-cols-4 gap-3 ">
-          <%= button_to "Все", certificates_path, method: :get, class: "rounded-lg border cursor-pointer py-2 px-3 bg-gradient-to-b from-gray-100 to-gray-200 font-sm w-full" %>
-          <%= button_to "ЮЛ", certificates_path, params: {legal_entity: true}, method: :get, class: "rounded-lg border cursor-pointer py-2 px-3 bg-gradient-to-b from-gray-100 to-gray-200 font-sm w-full" %>
+          <%= button_to "Все", certificates_path, 
+                                method: :get, 
+                                class: "rounded-lg 
+                                        #{"active" if current_page?(certificates_path) && !params[:legal_entity] && !params[:status]} 
+                                        border 
+                                        cursor-pointer 
+                                        py-2 px-3 
+                                        bg-gradient-to-b from-gray-100 to-gray-200 
+                                        font-sm 
+                                        w-full" %>
+          <%= button_to "ЮЛ", certificates_path, 
+                              params: {legal_entity: true}, 
+                              method: :get, 
+                              class: "rounded-lg #{"active" if params[:legal_entity]} 
+                                      border 
+                                      cursor-pointer 
+                                      py-2 
+                                      px-3 
+                                      bg-gradient-to-b from-gray-100 to-gray-200 
+                                      font-sm 
+                                      w-full" %>
         </div>
       </fieldset>
     </div>

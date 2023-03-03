@@ -56,7 +56,7 @@
 }
 
 button.active {
-  border-bottom: 2px solid rgb(186 230 253);
+  border-bottom: 3px solid rgb(186 230 253);
 }
 
 .page a {
