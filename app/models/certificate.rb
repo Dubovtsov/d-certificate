@@ -80,8 +80,12 @@ class Certificate < ApplicationRecord
       'bg-yellow-300'
     when "current"
       'bg-green-300'
-    when :rejected
+    when "rejected"
       'bg-red-300'
+    when "recalled"
+      'bg-red-300'
+    when "archive"
+      'bg-gray-300'
     else
       ''
     end

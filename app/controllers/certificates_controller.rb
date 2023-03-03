@@ -5,9 +5,10 @@ class CertificatesController < ApplicationController
   before_action :set_employee, except: %i[index import]
 
   def index
-    if params[:status]
+    if params[:status] || params[:legal_entity]
       @certificates = Certificate.all
       @certificates = Certificate.select_by_status(params[:status]) if params[:status].present?
+      @certificates = @certificates.where(legal_entity: params[:legal_entity]) if params[:legal_entity].present?
       # @pagy, @certificates = pagy(Certificate.search(params[:certificates_search]), items: 11)
     else
       @pagy, @certificates = pagy(Certificate.all, items: 11)
