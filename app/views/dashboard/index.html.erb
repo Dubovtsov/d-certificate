@@ -89,7 +89,7 @@
       <tbody>
         <tr class="border-b">
           <td>действующих:</td>
-          <td class="pl-4 text-center"><span class="px-1 rounded font-bold bg-green-500 text-white"><%= @certificates.certificate_status_counter("действующий") %></span></td>
+          <td class="pl-4 text-center"><span class="px-1 rounded font-bold bg-green-500 text-white"><%= @certificates.certificate_status_counter("current") %></span></td>
         </tr>
         <tr class="border-b">
           <td>меньше 1-го месяцев до оконочания:</td>
@@ -101,19 +101,19 @@
         </tr>
         <tr class="border-b">
           <td>черновиков:</td>
-          <td class="pl-4 text-center"><span class="px-1 rounded font-bold bg-cyan-500 text-white"><%= @certificates.certificate_status_counter("черновик") %></span></td>
+          <td class="pl-4 text-center"><span class="px-1 rounded font-bold bg-cyan-500 text-white"><%= @certificates.certificate_status_counter("draft") %></span></td>
         </tr>
         <tr class="border-b">
           <td>отклонено:</td>
-          <td class="pl-4 text-center"><span class="px-1 rounded font-bold <%= @certificates.certificate_status_counter("отклонен") == "0" ? "bg-cyan-500" : "bg-red-500" %>  text-white"><%= @certificates.certificate_status_counter("отклонен") %></span></td>
+          <td class="pl-4 text-center"><span class="px-1 rounded font-bold <%= @certificates.certificate_status_counter("rejected") == "0" ? "bg-cyan-500" : "bg-red-500" %>  text-white"><%= @certificates.certificate_status_counter("rejected") %></span></td>
         </tr>
         <tr class="border-b">
           <td>на проверке:</td>
-          <td class="pl-4 text-center"><span class="px-1 rounded font-bold bg-cyan-500 text-white <%= @certificates.certificate_status_counter("на проверке") == "0" ? "bg-info" : "bg-danger" %>  text-white"><%= @certificates.certificate_status_counter("на проверке") %></span></td>
+          <td class="pl-4 text-center"><span class="px-1 rounded font-bold bg-cyan-500 text-white <%= @certificates.certificate_status_counter("verify") == "0" ? "bg-info" : "bg-danger" %>  text-white"><%= @certificates.certificate_status_counter("verify") %></span></td>
         </tr>
          <tr class="border-b">
           <td>в архиве:</td>
-          <td class="pl-4 text-center"><span class="px-1 rounded font-bold bg-cyan-500 text-white <%= @certificates.certificate_status_counter("архив") == "0" ? "bg-info" : "bg-warning" %>  text-white"><%= @certificates.certificate_status_counter("архив") %></span></td>
+          <td class="pl-4 text-center"><span class="px-1 rounded font-bold bg-cyan-500 text-white <%= @certificates.certificate_status_counter("archive") == "0" ? "bg-info" : "bg-warning" %>  text-white"><%= @certificates.certificate_status_counter("archive") %></span></td>
         </tr>
       </tbody>
     </table>

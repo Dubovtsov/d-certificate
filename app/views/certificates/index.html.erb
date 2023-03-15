@@ -31,27 +31,37 @@
           </div>
         <% end %>
         <div class="grid grid-cols-4 gap-3 ">
-          <%= button_to "Все", certificates_path, 
+          <%= button_to certificates_path, 
                                 method: :get, 
                                 class: "rounded-lg 
+                                        justify-center
+                                        inline-flex items-center
                                         #{"active" if current_page?(certificates_path) && !params[:legal_entity] && !params[:status]} 
                                         border 
                                         cursor-pointer 
                                         py-2 px-3 
                                         bg-gradient-to-b from-gray-100 to-gray-200 
                                         font-sm 
-                                        w-full" %>
-          <%= button_to "ЮЛ", certificates_path, 
+                                        w-full" do %>
+            <span>ВСЕ</span>
+            <span class="bg-gray-400 text-white rounded-full h-6 px-2 flex items-center ml-2"><%= Certificate.all.count %></span>
+          <% end %>
+          <%= button_to certificates_path, 
                               params: {legal_entity: true}, 
                               method: :get, 
                               class: "rounded-lg #{"active" if params[:legal_entity]} 
+                                      justify-center
+                                      inline-flex items-center
                                       border 
                                       cursor-pointer 
                                       py-2 
                                       px-3 
                                       bg-gradient-to-b from-gray-100 to-gray-200 
                                       font-sm 
-                                      w-full" %>
+                                      w-full" do %>
+            <span>ЮЛ</span>
+            <span class="bg-gray-400 text-white rounded-full h-6 px-2 flex items-center ml-2"><%= Certificate.select_legal_entity.count %></span>
+          <% end %>
         </div>
       </fieldset>
     </div>

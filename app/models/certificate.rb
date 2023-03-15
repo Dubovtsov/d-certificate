@@ -1,3 +1,14 @@
+# t.boolean "legal_entity"
+# t.string "request_number"
+# t.string "request_link"
+# t.date "end_date"
+# t.string "status"
+# t.string "e_service"
+# t.bigint "employee_id", null: false
+# t.datetime "created_at", null: false
+# t.datetime "updated_at", null: false
+# t.index ["employee_id"], name: "index_certificates_on_employee_id"
+
 class Certificate < ApplicationRecord
   require 'csv'
   extend Enumerize
@@ -8,6 +19,7 @@ class Certificate < ApplicationRecord
   default_scope { order(updated_at: :desc) }
 
   scope :select_by_status, -> (status) { where(status: status) if status.present? }
+  scope :select_legal_entity, -> { where(legal_entity: true)}
   # Ex:- scope :active, -> {where(:active => true)}
 
   ActiveAdmin.register Certificate do
@@ -43,7 +55,7 @@ class Certificate < ApplicationRecord
 
   def self.one_months_left_counter
     @certificates_one_months_left = Certificate.all.select do |t|
-      ((t.end_date - DateTime.now).to_i < 30 && (t.end_date < DateTime.now) && t.status != 'архив')
+      ((t.end_date - DateTime.now).to_i < 30 && (t.end_date > DateTime.now) && t.status != "archive")
     end
 
     if @certificates_one_months_left.present?
@@ -68,7 +80,7 @@ class Certificate < ApplicationRecord
   end
 
   def one_months_left
-    (self.end_date - DateTime.now).to_i < 30
+    (self.end_date - DateTime.now).to_i < 30 && (status == :current)
     # (end_date - DateTime.now).to_i < 30 && (status == :current)
   end
 
