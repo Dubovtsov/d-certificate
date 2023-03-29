@@ -15,9 +15,18 @@ class Employee < ApplicationRecord
   validates :first_name, presence: true
   before_save :normalize_name
 
+  default_scope { order(last_name: :asc) }
+
   def name_with_initial
     "#{last_name.capitalize} #{first_name.capitalize} #{middle_name.capitalize}"
   end
+
+  def initials
+    if last_name? && first_name?
+      "#{last_name[0]}#{first_name[0]}"
+    end
+  end
+  
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|

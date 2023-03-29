@@ -20,6 +20,8 @@ class Certificate < ApplicationRecord
 
   scope :select_by_status, -> (status) { where(status: status) if status.present? }
   scope :select_legal_entity, -> { where(legal_entity: true)}
+  scope :select_without_status, -> (status) { where.not(status: status) if status.present? }
+  scope :select_one_months_left, -> { where((end_date - DateTime.now).to_i < 30 && (end_date > DateTime.now) && status != "archive") }
   # Ex:- scope :active, -> {where(:active => true)}
 
   ActiveAdmin.register Certificate do
@@ -84,6 +86,10 @@ class Certificate < ApplicationRecord
     # (end_date - DateTime.now).to_i < 30 && (status == :current)
   end
 
+  def has_status?(status)
+    self.status == status
+  end
+  
   def status_class
     case status
     when "draft"

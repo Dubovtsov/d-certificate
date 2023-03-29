@@ -8,25 +8,34 @@
     </div>
   </div>
 
-  <div id="departments" class="min-w-full" data-controller="search">
-    <input data-search-target="source" 
+  <div class="min-w-full" data-controller="search">
+    <%= form_tag departments_path, method: :get, id: "department-submit", role: 'search' do %>
+      <%= text_field_tag :query, params[:query], autofocus: true, data: { 'search-target': "source", 'action': "input->search#filter" } %>
+      <%= submit_tag "Искать", name: nil %>
+    <% end %>
+
+    <input data-remote='true' data-search-target="" 
               data-action="input->search#filter" 
               type="text" 
               class="search" 
               placeholder="search.." />
-
-    <%= render @departments %>
+    <div id="departments" data-search-target="results">
+      <%= render @departments %>
+    </div>
   </div>
 
   <div class="my-5"><%== pagy_nav(@pagy) %></div>
   
-
-  <div class="mb-3"> <!-- Department import -->
-    <%= form_tag import_departments_path, multipart: true do %>
-    <div class="col input-group">
-      <%= file_field_tag :file, class: "form-control" %>
-    </div>
-    <%= submit_tag "Импортировать", class: "btn btn-sm default-btn" %>
-    <% end %>
-  </div> <!-- Department import -->
+  <details class="border p-3 rounded">
+    <summary>import</summary>
+    <div class="mb-3"> <!-- Department import -->
+      <%= form_tag import_csv_departments_path, multipart: true do %>
+      <div class="col input-group">
+        <%= file_field_tag :file, class: "form-control" %>
+      </div>
+      <%= submit_tag "Импортировать", class: "btn btn-sm default-btn" %>
+      <% end %>
+    </div> <!-- Department import -->
+  </details>
+  
 </div>

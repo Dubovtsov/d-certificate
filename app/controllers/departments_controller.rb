@@ -3,8 +3,8 @@ class DepartmentsController < ApplicationController
   before_action :set_department, only: %i[show edit update destroy]
 
   def index
-    if params[:departmens_search]
-      @pagy, @departments = pagy(Department.search(params[:departmens_search]), items: 15)
+    if params[:query]
+      @pagy, @departments = pagy(Department.search(params[:query]), items: 15)    
     else
       @pagy, @departments = pagy(Department.all, items: 15)
       respond_to do |format|
@@ -24,8 +24,8 @@ class DepartmentsController < ApplicationController
 
   def edit; end
 
-  def import
-    Department.import(params[:file])
+  def import_csv
+    Department.import_csv(params[:file])
     flash[:success] = 'Файл успешно импортирован'
     redirect_to departments_url
   end

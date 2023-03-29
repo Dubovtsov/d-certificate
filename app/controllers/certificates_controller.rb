@@ -5,11 +5,15 @@ class CertificatesController < ApplicationController
   before_action :set_employee, except: %i[index import]
 
   def index
-    if params[:status] || params[:legal_entity]
-      @certificates = Certificate.all
-      @certificates = Certificate.select_by_status(params[:status]) if params[:status].present?
+    @certificates = Certificate.all
+    if params[:legal_entity].present?
       @certificates = @certificates.where(legal_entity: params[:legal_entity]) if params[:legal_entity].present?
-      # @pagy, @certificates = pagy(Certificate.search(params[:certificates_search]), items: 11)
+    elsif params[:status].present?
+      @certificates = Certificate.select_by_status(params[:status])
+    elsif params[:one_months_left].present?
+      @certificates = Certificate.select{|c| c.one_months_left}
+    elsif params[:two_months_left].present?
+      @certificates = Certificate.select{|c| c.two_months_left}
     else
       @pagy, @certificates = pagy(Certificate.all, items: 11)
       respond_to do |format|
@@ -90,4 +94,5 @@ class CertificatesController < ApplicationController
     params.require(:certificate).permit(:legal_entity, :request_number, :request_link, :end_date, :status,
                                         :e_service, :employee_id)
   end
+  
 end

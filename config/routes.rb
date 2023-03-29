@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     collection { post :import }
   end
   resources :departments do
-    collection { post :import }
+    collection { post :import_csv }
     resources :positions
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

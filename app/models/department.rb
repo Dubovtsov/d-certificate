@@ -1,6 +1,13 @@
+# t.string "name"
+# t.datetime "created_at", null: false
+# t.datetime "updated_at", null: false
+
 class Department < ApplicationRecord
   require 'csv'
+
+  include PgSearch::Model
   include GenerateCsv
+  pg_search_scope :search_department, against: [:name]
 
   has_many :positions, dependent: :destroy
   before_save { name.downcase! }
@@ -8,7 +15,7 @@ class Department < ApplicationRecord
   validates :name, uniqueness: true
   default_scope { order(name: :asc) }
 
-  def self.import(file)
+  def self.import_csv(file)
     CSV.foreach(file.path, headers: true) do |row|
       Department.create! row.to_hash unless Department.exists?(name: row['name'])
     end
