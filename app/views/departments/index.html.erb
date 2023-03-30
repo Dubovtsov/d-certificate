@@ -39,3 +39,36 @@
   </details>
   
 </div>
+<h1>Kanban Board</h1>
+
+<div class="kanban-board" data-controller="tasks">
+  <div class="tasks-group" data-status="0" data-action="dragover->tasks#allowdrop drop->tasks#drop">
+    <h2>Backlog</h2>
+    <% @tasks.where(status: 0).each do |task| %>
+      <div class="task" data-tasks-target="task" data-id="<%= task.id %>" data-status="<%= task.status %>" draggable="true" data-action="dragstart->tasks#dragstart dragend->tasks#dragend">
+        <h3><%= task.name %></h3>
+        <p><%= task.description %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="tasks-group" data-status="1" data-action="dragover->tasks#allowdrop drop->tasks#drop">
+    <h2>In Progress</h2>
+    <% @tasks.where(status: 1).each do |task| %>
+      <div class="task" data-tasks-target="task" data-id="<%= task.id %>" data-status="<%= task.status %>" draggable="true" data-action="dragstart->tasks#dragstart dragend->tasks#dragend">
+        <h3><%= task.name %></h3>
+        <p><%= task.description %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="tasks-group" data-status="2" data-action="dragover->tasks#allowdrop drop->tasks#drop">
+    <h2>Completed</h2>
+    <% @tasks.where(status: 2).each do |task| %>
+      <div class="task" data-tasks-target="task" data-id="<%= task.id %>" data-status="<%= task.status %>" draggable="true" data-action="dragstart->tasks#dragstart dragend->tasks#dragend">
+        <h3><%= task.name %></h3>
+        <p><%= task.description %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

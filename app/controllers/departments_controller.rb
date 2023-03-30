@@ -7,6 +7,7 @@ class DepartmentsController < ApplicationController
       @pagy, @departments = pagy(Department.search(params[:query]), items: 15)    
     else
       @pagy, @departments = pagy(Department.all, items: 15)
+      @tasks = Task.all
       respond_to do |format|
         format.html
         format.csv { send_data Department.all.generate_csv, filename: "departments-#{Date.today}.csv" }
