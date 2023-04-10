@@ -4,9 +4,11 @@ class DepartmentsController < ApplicationController
 
   def index
     if params[:query]
-      @pagy, @departments = pagy(Department.search(params[:query]), items: 15)    
+      @departments = Department.search(params[:query])
+      # @pagy, @departments = pagy(Department.search(params[:query]), items: 15)    
     else
-      @pagy, @departments = pagy(Department.all, items: 15)
+      @departments = Department.all
+      # @pagy, @departments = pagy(Department.all, items: 15)
       @tasks = Task.all
       respond_to do |format|
         format.html

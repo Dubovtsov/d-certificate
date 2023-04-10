@@ -74,7 +74,7 @@
 </div>
 
 <div class="mt-5 grid gap-4 grid-cols-5">
-  <div class="col-span-4 rounded-lg bg-white ">
+  <div class="col-span-4 rounded-lg bg-white p-8 shadow">
     <%= month_calendar(events: @certificates, start_date_param: :end_date) do |date, certificates| %>
       <span class="text-xs font-medium text-gray-500"><%= date.strftime("%d.%m.%Y") %></span>
       <% certificates.each do |certificate| %>
@@ -84,7 +84,7 @@
       <% end %>
     <% end %>
   </div>
-  <div class="p-5 col-span-1 rounded-lg bg-stone-100 d-flex shadow">
+  <div class="p-5 col-span-1 rounded-lg bg-white p-8 d-flex shadow">
     <table class="table" height="50px">
       <tbody>
         <tr class="border-b">

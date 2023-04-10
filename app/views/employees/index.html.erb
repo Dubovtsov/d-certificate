@@ -1,9 +1,9 @@
 <div class="w-full">
 
-  <div class="flex justify-between items-center">
-    <h3 class="font-bold text-2xl">Список сотрудников</h3>
-    <div class="flex p-5">
-      <%= link_to new_employee_path, data: { turbo_frame: 'modal' }, class: "rounded-lg btn-circle py-2 px-3 bg-green-500 text-white " do %>
+  <div class="flex justify-between border items-center bg-white px-8 py-3 rounded">
+    <h3 class="font-bold text-gray-600 text-2xl">Список сотрудников</h3>
+    <div class="flex">
+      <%= link_to new_employee_path, data: { turbo_frame: 'modal' }, class: "block rounded btn-circle px-3 py-2 bg-blue-500 text-white" do %>
         <i class="fa-solid fa-plus font-bold"></i>
       <% end %>
     </div>
@@ -13,13 +13,17 @@
     <input data-search-target="source" 
                 data-action="input->search#filter" 
                 type="text" 
-                class="search mb-6" 
+                class="search border border-gray-200 rounded mb-6 mt-6" 
                 placeholder="search.." />
-    <div class="flex flex-wrap -m-2">
+    <div class="flex flex-wrap bg-white p-8 rounded-lg border rounded h-[60vh] overflow-auto scrollbar">
       <%= render @employees %>
     </div>
-    
-    <div class="my-5"><%== pagy_nav(@pagy) %></div>
+
+    <div class="gradient-scroll"></div>
+
+    <% if false%>
+      <div class="my-5"><%== pagy_nav(@pagy) %></div>
+    <% end %>
   </div>
 
   <details>

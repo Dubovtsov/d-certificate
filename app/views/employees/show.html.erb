@@ -16,7 +16,7 @@
                     py-3
                     hover:border-transparent hover:bg-gray-100
                     active" 
-                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="1"><i class="fa-solid fa-id-card px-5 text-xl"></i>Персональный данные</button>
+                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="1"><i class="fa-solid fa-id-card px-5 text-slate-400 text-xl"></i>Персональный данные</button>
       <button class="
                     font-medium
                     text-xs
@@ -26,7 +26,7 @@
                     px-6
                     py-3
                     hover:border-transparent hover:bg-gray-100"
-                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="2"><i class="fa-solid fa-file-contract px-5 text-xl"></i>Сертификаты</button>
+                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="2"><i class="fa-solid fa-file-contract px-5 text-slate-400 text-xl"></i>Сертификаты</button>
       <button class="
                     font-medium
                     text-slate-700
@@ -36,7 +36,7 @@
                     px-6
                     py-3
                     hover:border-transparent hover:bg-gray-100"
-                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="3"><i class="fa-solid fa-briefcase px-5 text-xl"></i>Должности</button>
+                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="3"><i class="fa-solid fa-briefcase px-5 text-slate-400 text-xl"></i>Должности</button>
     </div>
     <div class="tab-content bg-gray-100 flex flex-row justify-center" data-tabs-target="content">
       <div class="tab-content-item p-5 fade-in" data-tabs-target="tabContentItem" data-tab-id="1">
@@ -50,7 +50,7 @@
           <div class="grid justify-items-center">
             <div class="mb-6 text-lg">Нет данных</div>
             <div>
-              <%= link_to 'Добавить персональные данные', new_employee_personal_datum_path(@employee), class: "rounded-lg py-2 px-3 bg-emerald-300 hover:bg-emerald-400 font-medium" %>
+              <%= link_to 'Добавить персональные данные', new_employee_personal_datum_path(@employee), class: "rounded-lg py-2 px-3 bg-blue-400 hover:bg-blue-400 font-medium" %>
             </div>
           </div>
         <% end %>
@@ -58,7 +58,7 @@
 
       <div class="tab-content-item p-5 fade-in" data-tabs-target="tabContentItem" data-tab-id="2" hidden>
         <div class="flex justify-center p-5">
-          <%= link_to new_employee_certificate_path(@employee), data: { turbo_frame: 'modal' }, class: "rounded-lg btn-circle py-2 px-3 bg-green-500 text-white " do %>
+          <%= link_to new_employee_certificate_path(@employee), data: { turbo_frame: 'modal' }, class: "rounded-lg btn-circle py-2 px-3 bg-blue-400 text-white " do %>
             <i class="fa-solid fa-plus font-bold"></i>
           <% end %>
         </div>
@@ -84,7 +84,7 @@
 
       <div class="tab-content-item p-5 fade-in w-full lg:w-1/2" data-tabs-target="tabContentItem" data-tab-id="3" hidden>
         <div class="flex justify-center p-5">
-          <%= link_to new_employee_employee_position_path(@employee), data: { turbo_frame: 'modal' }, class: "rounded-lg btn-circle py-2 px-3 bg-green-500 text-white " do %>
+          <%= link_to new_employee_employee_position_path(@employee), data: { turbo_frame: 'modal' }, class: "rounded-lg btn-circle py-2 px-3 bg-blue-400 text-white " do %>
             <i class="fa-solid fa-plus font-bold"></i>
           <% end %>
         </div>

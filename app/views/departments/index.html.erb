@@ -1,32 +1,30 @@
 <div class="w-2/4">
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-2xl mb-3">Список отделений</h1>
-    <div class="flex justify-center mb-3">
-      <%= link_to new_department_path, data: { turbo_frame: 'modal' }, class: "rounded-lg btn-circle py-2 px-3 bg-green-500 text-white " do %>
+  <div class="flex justify-between border items-center bg-white px-8 py-3 rounded">
+    <h1 class="font-bold text-gray-600 text-2xl">Список отделений</h1>
+    <div class="flex justify-center">
+      <%= link_to new_department_path, data: { turbo_frame: 'modal' }, class: "block rounded btn-circle px-3 py-2 bg-blue-500 text-white " do %>
         <i class="fa-solid fa-plus font-bold"></i>
       <% end %>
     </div>
   </div>
 
-  <div class="min-w-full" data-controller="search">
-    <%= form_tag departments_path, method: :get, id: "department-submit", role: 'search' do %>
-      <%= text_field_tag :query, params[:query], autofocus: true, data: { 'search-target': "source", 'action': "input->search#filter" } %>
-      <%= submit_tag "Искать", name: nil %>
-    <% end %>
-
-    <input data-remote='true' data-search-target="" 
+  <div class="min-w-full mt-3" data-controller="search">
+    <input data-remote='true' data-search-target="source" 
               data-action="input->search#filter" 
               type="text" 
-              class="search" 
-              placeholder="search.." />
-    <div id="departments" data-search-target="results">
+              class="search border border-gray-200 rounded" 
+              placeholder="Поиск.." />
+    <div id="departments" class="bg-white scrollbar border p-8 mt-3 rounded h-[60vh] overflow-auto" data-search-target="results">
       <%= render @departments %>
     </div>
   </div>
 
-  <div class="my-5"><%== pagy_nav(@pagy) %></div>
+<% if false %>
+   <div class="my-5"><%== pagy_nav(@pagy) %></div>
+<% end %>
+ 
   
-  <details class="border p-3 rounded">
+  <details class="border mt-4 p-3 bg-white rounded">
     <summary>import</summary>
     <div class="mb-3"> <!-- Department import -->
       <%= form_tag import_csv_departments_path, multipart: true do %>
@@ -38,37 +36,4 @@
     </div> <!-- Department import -->
   </details>
   
-</div>
-<h1>Kanban Board</h1>
-
-<div class="flex container" data-controller="tasks">
-  <div class="w-1/3" data-status="0" data-action="dragover->tasks#allowdrop drop->tasks#drop">
-    <h2 class="text-xl font-bold text-red-700">Backlog</h2>
-    <% @tasks.where(status: 0).each do |task| %>
-      <div class="task" data-tasks-target="task" data-id="<%= task.id %>" data-status="<%= task.status %>" draggable="true" data-action="dragstart->tasks#dragstart dragend->tasks#dragend">
-        <h3><%= task.name %></h3>
-        <p class="text-sm text-gray-500"><%= task.description %></p>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="w-1/3" data-status="1" data-action="dragover->tasks#allowdrop drop->tasks#drop">
-    <h2 class="text-xl font-bold text-yellow-700">In Progress</h2>
-    <% @tasks.where(status: 1).each do |task| %>
-      <div class="task" data-tasks-target="task" data-id="<%= task.id %>" data-status="<%= task.status %>" draggable="true" data-action="dragstart->tasks#dragstart dragend->tasks#dragend">
-        <h3><%= task.name %></h3>
-        <p class="text-sm text-gray-500"><%= task.description %></p>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="w-1/3" data-status="2" data-action="dragover->tasks#allowdrop drop->tasks#drop">
-    <h2 class="text-xl font-bold text-green-700">Completed</h2>
-    <% @tasks.where(status: 2).each do |task| %>
-      <div class="task" data-tasks-target="task" data-id="<%= task.id %>" data-status="<%= task.status %>" draggable="true" data-action="dragstart->tasks#dragstart dragend->tasks#dragend">
-        <h3 class="text-gray-900 font-bold"><%= task.name %></h3>
-        <p class="text-sm text-gray-500"><%= task.description %></p>
-      </div>
-    <% end %>
-  </div>
 </div>

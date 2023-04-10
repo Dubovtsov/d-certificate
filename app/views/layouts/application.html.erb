@@ -59,7 +59,7 @@
         <aside class="w-300px py-4 text-gray-600">
           <nav class="flex flex-col gap-6">
             <div class="flex flex-col text-center">
-              <a href="<%= dashboard_path %>" class="px-4 py-1 font-semibold hover:text-green-500">
+              <a href="<%= dashboard_path %>" class="px-4 py-1 font-semibold hover:text-blue-500">
                 <i class="fa-solid fa-chart-pie text-3xl"></i>
                 </br >
                 Главная
@@ -67,14 +67,14 @@
               
             </div>
             <div class="flex flex-col text-center">
-              <a href="<%= departments_path %>" class="px-4 py-1 font-semibold hover:text-green-500">
+              <a href="<%= departments_path %>" class="px-4 py-1 font-semibold hover:text-blue-500">
                 <i class="fa-solid fa-briefcase px-5 text-3xl"></i>
                 </br >
                 Отделения
               </a>
             </div>
             <div class="flex flex-col text-center">
-              <a href="<%= employees_path %>" class="px-4 py-1 font-semibold hover:text-green-500">
+              <a href="<%= employees_path %>" class="px-4 py-1 font-semibold hover:text-blue-500">
                 <i class="fa-solid fa-user-group px-5 text-3xl"></i>
                 </br >
                 Сотрудники
@@ -82,7 +82,7 @@
             </div>
 
             <div class="flex flex-col text-center">
-              <a href="<%= certificates_path %>" class="px-4 py-1 font-semibold hover:text-green-500">
+              <a href="<%= certificates_path %>" class="px-4 py-1 font-semibold hover:text-blue-500">
                 <i class="fa-solid fa-file-contract px-5 text-3xl"></i>
                 </br >
                 Сертификаты
@@ -93,12 +93,9 @@
         </aside>
         <main class="flex-1 p-4">
           <%= turbo_frame_tag "modal" %>
-          <div class="flex-1  bg-white bg-opacity-50
-                      backdrop-blur-lg
-                      border border-gray-200
+          <div class="flex-1
                       p-8
-                      mx-auto shadow-lg 
-                      rounded-lg p-6">
+                      mx-auto">
             <%= yield %>
           </div>
         </main>

@@ -4,9 +4,11 @@ class EmployeesController < ApplicationController
 
   def index
     if params[:employees_search]
-      @pagy, @employees = pagy(Employee.search(params[:employees_search]), items: 15)
+      @employees = Employee.search(params[:employees_search])
+      # @pagy, @employees = pagy(Employee.search(params[:employees_search]), items: 15)
     else
-      @pagy, @employees = pagy(Employee.all, items: 15)
+      @employees = Employee.all
+      # @pagy, @employees = pagy(Employee.all, items: 15)
       respond_to do |format|
         format.html
         format.csv { send_data Employee.all.generate_csv, filename: "employees-#{Date.today}.csv" }
