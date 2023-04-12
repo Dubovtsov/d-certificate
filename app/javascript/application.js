@@ -2,6 +2,10 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
+function hide(el) {
+    el.nextElementSibling.classList.add("hidden")
+};
+
 $(document).on("click", ".copytext", function(){
     console.log(this.innerText.trim())
     navigator.clipboard.writeText(this.innerText.trim())
@@ -13,3 +17,4 @@ $(document).on("click", ".copytext", function(){
             3000
     )
 })
+

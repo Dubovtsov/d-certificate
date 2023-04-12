@@ -9,7 +9,7 @@
       <p class="font-bold text-xl">должности отделения</p>
       <%= link_to 'Добавить', new_department_position_path(@department), data: { turbo_frame: 'modal' }, class: "rounded-lg py-1 px-2 bg-blue-600 text-white block font-medium" %>
     </div>
-    <div id="positions" class="min-w-full">
+    <div id="positions" data-controller="menu" class="min-w-full">
       <%= render @positions %>
     </div>
   </div>

@@ -14,12 +14,12 @@
                 data-action="input->search#filter" 
                 type="text" 
                 class="search border border-gray-200 rounded mb-6 mt-6" 
-                placeholder="search.." />
-    <div class="flex flex-wrap bg-white p-8 rounded-lg border rounded h-[60vh] overflow-auto scrollbar">
+                placeholder="Поиск.." />
+    <div class="flex flex-wrap bg-white p-8 rounded border rounded h-[60vh] overflow-auto scrollbar">
       <%= render @employees %>
     </div>
 
-    <div class="gradient-scroll"></div>
+    <div class="gradient-scroll border-b border-x rounded-b"></div>
 
     <% if false%>
       <div class="my-5"><%== pagy_nav(@pagy) %></div>

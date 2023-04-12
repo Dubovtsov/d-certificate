@@ -14,9 +14,10 @@
               type="text" 
               class="search border border-gray-200 rounded" 
               placeholder="Поиск.." />
-    <div id="departments" class="bg-white scrollbar border p-8 mt-3 rounded h-[60vh] overflow-auto" data-search-target="results">
+    <div id="departments" class="bg-white scrollbar border p-8 mt-3 rounded h-[60vh] overflow-auto" data-controller="menu" data-search-target="results">
       <%= render @departments %>
     </div>
+    <div class="gradient-scroll border-b border-x rounded-b"></div>
   </div>
 
 <% if false %>

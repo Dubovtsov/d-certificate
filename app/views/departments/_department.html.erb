@@ -3,6 +3,10 @@
     <div class="flex-auto">
       <%= link_to department.name.capitalize, department, class:"font-medium", data: { turbo_frame: "_top" } %>
     </div>
-    <%= render "shared/control_buttons", model: department %>
+  
+    <div class="relative">
+      <%= render "shared/menu", model: department %>
+    </div>
+    
   </div>
 <% end %>
