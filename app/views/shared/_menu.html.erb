@@ -3,7 +3,7 @@
 </button>
 
 <!-- Dropdown menu -->
-<div data-menu-target="menu" class="z-10 origin-top-right absolute right-0 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+<div data-menu-target="menu" class="z-10 fade-in-down origin-top-right absolute right-0 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
   <ul class="py-2 text-sm text-gray-700">
     <li>
       <%= link_to "Редактировать", send("edit_#{model.class.name.downcase}_path", model), data: { turbo_frame: 'modal' }, class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white transition" %>

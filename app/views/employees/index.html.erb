@@ -3,7 +3,7 @@
   <div class="flex justify-between border items-center bg-white px-8 py-3 rounded">
     <h3 class="font-bold text-gray-600 text-2xl">Список сотрудников</h3>
     <div class="flex">
-      <%= link_to new_employee_path, data: { turbo_frame: 'modal' }, class: "block rounded btn-circle px-3 py-2 bg-blue-500 text-white" do %>
+      <%= link_to new_employee_path, data: { turbo_frame: 'modal' }, class: "block rounded btn-circle px-3 py-2 bg-indigo-400 text-white" do %>
         <i class="fa-solid fa-plus font-bold"></i>
       <% end %>
     </div>
@@ -12,7 +12,7 @@
   <div id="employees" data-controller="search">
     <input data-search-target="source" 
                 data-action="input->search#filter" 
-                type="text" 
+                type="search" 
                 class="search border border-gray-200 rounded mb-6 mt-6" 
                 placeholder="Поиск.." />
     <div class="flex flex-wrap bg-white p-8 rounded border rounded h-[60vh] overflow-auto scrollbar">
