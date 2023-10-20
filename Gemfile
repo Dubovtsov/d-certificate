@@ -18,6 +18,8 @@ gem 'capistrano-passenger', '~> 0.2.0'
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 gem 'enumerize'
 gem 'db-clone', '~> 2.1'
+gem "slim"
+gem "slim-rails"
 # gem 'elasticsearch', '~> 8.6'
 # gem 'elasticsearch-model'
 # gem 'elasticsearch-rails'
@@ -43,8 +45,9 @@ gem "simple_calendar", "~> 2.4"
 gem 'pagy', '~> 5.10'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
-
+gem "image_processing", "~> 1.2"
+gem 'paperclip', '~> 6.1'
+gem 'mimemagic', '~> 0.3.0'
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end

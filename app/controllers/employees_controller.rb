@@ -80,6 +80,6 @@ class EmployeesController < ApplicationController
   end
 
   def employee_params
-    params.require(:employee).permit(:last_name, :first_name, :middle_name)
+    params.require(:employee).permit(:last_name, :first_name, :middle_name, files: [])
   end
 end

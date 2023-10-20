@@ -1,6 +1,7 @@
 FROM ruby:3.1.3
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
-WORKDIR /usr/src/app
+WORKDIR /usr/app
+RUN gem install bundler
 COPY Gemfile* ./
 RUN bundle install
 COPY . .

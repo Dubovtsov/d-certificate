@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   post 'certificates/import', to: 'certificates#import'
   get 'dashboard', to: "dashboard#index"
   get 'employees/:id/proxy', to: "employees#proxy", as: 'proxy'
+  resources :attachments, only: :destroy
 end

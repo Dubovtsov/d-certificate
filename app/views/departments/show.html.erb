@@ -1,16 +1,26 @@
 <% if notice.present? %>
   <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
 <% end %>
-<div class="mx-auto w-1/3" data-controller="menu">
+<div class="mx-auto w-2/3" data-controller="menu">
   <div class="mx-auto">
     <%= render @department %>
     </br>
-    <div class="flex justify-between items-center mt-3 mb-3">
-      <p class="font-bold text-xl">должности отделения</p>
-      <%= link_to 'Добавить', new_department_position_path(@department), data: { turbo_frame: 'modal' }, class: "rounded-lg py-1 px-2 bg-blue-600 text-white block font-medium" %>
+  </div>
+  <div class="flex">
+    <div class="w-1/2">
+      <div class="flex justify-between items-center mt-3 mb-3">
+        <p class="font-bold text-xl">должности отделения</p>
+        <%= link_to 'Добавить', new_department_position_path(@department), data: { turbo_frame: 'modal' }, class: "rounded-lg py-1 px-2 bg-blue-600 text-white block font-medium" %>
+      </div>
+      <div id="positions" data-controller="menu" class="min-w-full">
+        <%= render @positions %>
+      </div>
     </div>
-    <div id="positions" data-controller="menu" class="min-w-full">
-      <%= render @positions %>
+    <div class="w-1/2">
+      <div class="">
+        <% @employees = Employee.joins(:employee_positions, :positions).where(positions: { department_id: @department.id }) %>
+        <%= render @employees %>
+      </div>
     </div>
   </div>
 </div>

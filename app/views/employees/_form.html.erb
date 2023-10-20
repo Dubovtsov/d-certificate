@@ -12,17 +12,17 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label "Фамилия" %>
-    <%= form.text_field :last_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
+    <%= form.label "Фамилия", class:"text-gray-600" %>
+    <%= form.text_field :last_name, autofocus: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label "Имя" %>
+    <%= form.label "Имя", class:"text-gray-600" %>
     <%= form.text_field :first_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label "Отчество" %>
+    <%= form.label "Отчество", class:"text-gray-600" %>
     <%= form.text_field :middle_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
   </div>
 

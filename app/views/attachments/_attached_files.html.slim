@@ -1,0 +1,17 @@
+span.font-size-13.font-weight-bold.mt-2 Прикрепленные файлы:
+
+- resource.files.each do |file|
+  = content_tag(:div, id: "attached-file-#{file.id}", class: "")
+    div.flex.w-full.my-2.rounded-lg.border-2.border-orange-100.items-center.px-3.py-2.bg-white
+      div.flex.w-16.h-16.bg-indigo-50.justify-center.font-bold.border.border-white.items-center.flex-shrink-0.rounded-full.mr-4
+        = File.extname("#{file.filename}").delete('.')
+
+      div.col-md-8
+        div.card-body.py-1.px-3
+          small.card-title = link_to file.filename.to_s, url_for(file)
+          p.card-text
+            small= link_to 'удалить', attachment_path(file),
+                              class: "text-muted",
+                              method: :delete,
+                              remote: true,
+                              data: { confirm: 'Are you sure?', "turbo-method": :delete }

@@ -1,0 +1,22 @@
+<%= form_with(model: staff_member) do |form| %>
+  <% if department.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(staff_member.errors.count, "error") %> prohibited this department from being saved:</h2>
+
+      <ul>
+        <% staff_member.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :files %>
+    <%= form.file_field :files, multiple: true %>
+  </div>
+
+  <div>
+    <%= form.submit "Создать", class:"btn btn-sm mt-2 btn-outline-primary float-end" %>
+  </div>
+<% end %>

@@ -16,7 +16,7 @@
                     py-3
                     hover:border-transparent hover:bg-gray-100
                     active" 
-                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="1"><i class="fa-solid fa-id-card px-5 text-slate-400 text-xl"></i>Персональный данные</button>
+                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="1"><i class="fa-solid fa-id-card pr-5 text-slate-400 text-xl"></i>Персональный данные</button>
       <button class="
                     font-medium
                     text-xs
@@ -26,7 +26,7 @@
                     px-6
                     py-3
                     hover:border-transparent hover:bg-gray-100"
-                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="2"><i class="fa-solid fa-file-contract px-5 text-slate-400 text-xl"></i>Сертификаты</button>
+                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="2"><i class="fa-solid fa-file-contract pr-5 text-slate-400 text-xl"></i>Сертификаты</button>
       <button class="
                     font-medium
                     text-slate-700
@@ -36,7 +36,17 @@
                     px-6
                     py-3
                     hover:border-transparent hover:bg-gray-100"
-                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="3"><i class="fa-solid fa-briefcase px-5 text-slate-400 text-xl"></i>Должности</button>
+                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="3"><i class="fa-solid fa-briefcase pr-5 text-slate-400 text-xl"></i>Должности</button>
+      <button class="
+                    font-medium
+                    text-slate-700
+                    text-xs
+                    leading-tight
+                    uppercase
+                    px-6
+                    py-3
+                    hover:border-transparent hover:bg-gray-100"
+                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="4"><i class="fa-solid fa-briefcase pr-5 text-slate-400 text-xl"></i>Файлы</button>
     </div>
     <div class="tab-content bg-gray-100 flex flex-row justify-center" data-tabs-target="content">
       <div class="tab-content-item p-5 fade-in" data-tabs-target="tabContentItem" data-tab-id="1">
@@ -44,7 +54,7 @@
           <div class="p-5 grid justify-items-center">
             <%= render @personal_data %>
             <br>
-            <%= link_to 'Edit', edit_employee_personal_datum_path(@employee, @employee.personal_datum), class: "mt-2 rounded-lg py-2 px-3 bg-gray-100 font-medium" %>
+            <%= link_to 'Edit', edit_employee_personal_datum_path(@employee, @employee.personal_datum), class: "mt-2 rounded-lg py-2 px-3 bg-gray-200 hover:bg-gray-50 font-medium" %>
           </div>
         <% else %>
           <div class="grid justify-items-center">
@@ -89,6 +99,35 @@
           <% end %>
         </div>
         <%= render @employee_positions %>
+      </div>
+
+      <div class="tab-content-item p-5 fade-in w-full lg:w-1/2" data-tabs-target="tabContentItem" data-tab-id="4" hidden>
+        <div class="flex justify-center p-5">
+          <%= form_with(model: @employee) do |form| %>
+            <% if @employee.errors.any? %>
+              <div style="color: red">
+                <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this department from being saved:</h2>
+
+                <ul>
+                  <% @employee.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="mb-3 w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+              <%= form.file_field :files, multiple: true, class:"" %>
+              <%= form.submit "Добавить", class:"rounded-lg py-1 px-3 bg-indigo-400 text-white" %>
+            </div>
+           
+          <% end %>
+        </div>
+        <% if @employee.files.attached? %>
+          <div class="">
+            <%= render partial: "attachments/attached_files", locals: { resource: @employee } %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
