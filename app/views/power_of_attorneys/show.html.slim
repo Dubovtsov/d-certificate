@@ -1,0 +1,10 @@
+p style="color: green" = notice
+
+== render @power_of_attorney
+
+div
+  => link_to "Edit this power of attorney", edit_power_of_attorney_path(@power_of_attorney)
+  '|
+  =< link_to "Back to power of attorneys", power_of_attorneys_path
+
+  = button_to "Destroy this power of attorney", @power_of_attorney, method: :delete

@@ -1,0 +1,10 @@
+h1 Editing power of attorney
+
+== render "form", power_of_attorney: @power_of_attorney
+
+br
+
+div
+  => link_to "Show this power of attorney", @power_of_attorney
+  '|
+  =< link_to "Back to power of attorneys", power_of_attorneys_path

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :power_of_attorneys, only: [:index]
   resources :tasks do
     patch 'update_status', on: :member
   end
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
     resources :employee_positions, except: [:index]
     resources :certificates, except: [:index]
     resources :personal_data
+    resources :power_of_attorneys
     collection { post :import }
   end
   resources :departments do

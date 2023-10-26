@@ -20,6 +20,7 @@ class EmployeesController < ApplicationController
     @personal_data = @employee.personal_datum
     @employee_positions = @employee.employee_positions
     @certificates = @employee.certificates
+    @power_of_attorneys = @employee.power_of_attorneys
   end
 
   def new

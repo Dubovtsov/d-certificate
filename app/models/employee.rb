@@ -7,6 +7,7 @@ class Employee < ApplicationRecord
   accepts_nested_attributes_for :employee_positions
   has_one :personal_datum, dependent: :destroy
   has_many :certificates, dependent: :destroy
+  has_many :power_of_attorneys, dependent: :destroy
   has_many_attached :files
   accepts_nested_attributes_for :personal_datum
   accepts_nested_attributes_for :employee_positions

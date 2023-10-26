@@ -29,14 +29,14 @@
                     data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="2"><i class="fa-solid fa-file-contract pr-5 text-slate-400 text-xl"></i>Сертификаты</button>
       <button class="
                     font-medium
-                    text-slate-700
                     text-xs
+                    text-slate-700
                     leading-tight
                     uppercase
                     px-6
                     py-3
                     hover:border-transparent hover:bg-gray-100"
-                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="3"><i class="fa-solid fa-briefcase pr-5 text-slate-400 text-xl"></i>Должности</button>
+                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="3"><i class="fa-solid fa-file-contract pr-5 text-slate-400 text-xl"></i>Доверенности</button>
       <button class="
                     font-medium
                     text-slate-700
@@ -46,7 +46,17 @@
                     px-6
                     py-3
                     hover:border-transparent hover:bg-gray-100"
-                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="4"><i class="fa-solid fa-briefcase pr-5 text-slate-400 text-xl"></i>Файлы</button>
+                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="4"><i class="fa-solid fa-briefcase pr-5 text-slate-400 text-xl"></i>Должности</button>
+      <button class="
+                    font-medium
+                    text-slate-700
+                    text-xs
+                    leading-tight
+                    uppercase
+                    px-6
+                    py-3
+                    hover:border-transparent hover:bg-gray-100"
+                    data-action="click->tabs#changeTab" data-tabs-target="tab" data-tab-id="5"><i class="fa-solid fa-briefcase pr-5 text-slate-400 text-xl"></i>Файлы</button>
     </div>
     <div class="tab-content bg-gray-100 flex flex-row justify-center" data-tabs-target="content">
       <div class="tab-content-item p-5 fade-in" data-tabs-target="tabContentItem" data-tab-id="1">
@@ -92,16 +102,28 @@
           <% end %>
       </div>
 
-      <div class="tab-content-item p-5 fade-in w-full lg:w-1/2" data-tabs-target="tabContentItem" data-tab-id="3" hidden>
+      <div class="tab-content-item p-5 fade-in" data-tabs-target="tabContentItem" data-tab-id="3" hidden>
         <div class="flex justify-center p-5">
-          <%= link_to new_employee_employee_position_path(@employee), data: { turbo_frame: 'modal' }, class: "rounded-lg btn-circle py-2 px-3 bg-indigo-400 text-white " do %>
-            <i class="fa-solid fa-plus font-bold"></i>
-          <% end %>
+          <%= render partial: "power_of_attorneys/form", locals: { employee: @employee, power_of_attorney: @employee.power_of_attorneys.build } %>
         </div>
-        <%= render @employee_positions %>
+        <% if @power_of_attorneys.present? %>
+          <div class="table border-collapse border-t-gray-50 border w-full rounded-lg">
+            <div class="table-header-group">
+              <div class="table-row border bg-gradient-to-t from-gray-100 to-gray-200 text-xs">
+                <div class="table-cell text-left px-5 py-3 font-semibold">Номер запроса</div>
+                <div class="table-cell text-left px-5 py-3 font-semibold">Ссылка на запрос</div>
+                <div class="table-cell text-left px-5 py-3 font-semibold">Дата окончания</div>
+                <div class="table-cell text-right px-5 py-3"></div>
+              </div>
+            </div>
+            <%= render @power_of_attorneys %>
+          </div>
+          <% else %>
+          <h1>Нет доверенностей</h1>
+          <% end %>
       </div>
 
-      <div class="tab-content-item p-5 fade-in w-full lg:w-1/2" data-tabs-target="tabContentItem" data-tab-id="4" hidden>
+      <div class="tab-content-item p-5 fade-in w-full lg:w-1/2" data-tabs-target="tabContentItem" data-tab-id="5" hidden>
         <div class="flex justify-center p-5">
           <%= form_with(model: @employee) do |form| %>
             <% if @employee.errors.any? %>

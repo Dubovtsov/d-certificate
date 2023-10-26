@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+h1 Power of attorneys
+
+#power_of_attorneys
+  - @power_of_attorneys.each do |power_of_attorney|
+    == render power_of_attorney
+    p
+      = link_to "Show this power of attorney", power_of_attorney
+
+= link_to "New power of attorney", new_employee_power_of_attorney_path

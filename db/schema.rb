@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_26_120618) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_25_125210) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -131,6 +131,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_26_120618) do
     t.index ["department_id"], name: "index_positions_on_department_id"
   end
 
+  create_table "power_of_attorneys", force: :cascade do |t|
+    t.string "title"
+    t.date "end_date"
+    t.bigint "employee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_power_of_attorneys_on_employee_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -158,4 +167,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_26_120618) do
   add_foreign_key "employee_positions", "positions"
   add_foreign_key "personal_data", "employees"
   add_foreign_key "positions", "departments"
+  add_foreign_key "power_of_attorneys", "employees"
 end

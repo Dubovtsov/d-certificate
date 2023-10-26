@@ -23,6 +23,7 @@ class PositionsController < ApplicationController
     respond_to do |format|
       if @position.save
         # format.turbo_stream { render turbo_stream: turbo_stream.update('positions', partial: 'positions/position', locals: {position: @department.positions}) }
+        # format.turbo_stream { render turbo_stream: turbo_stream.prepend(:positions, partial: "positions/position", locals: @position) }
         format.html { redirect_to department_url(@department), notice: "Position was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
